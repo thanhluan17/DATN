@@ -1,0 +1,174 @@
+/* main */
+html {
+  height: 100%;
+}
+
+body {
+  background-image: url("../../../../assets/img/bg-login.jpg");
+  background-repeat: no-repeat, repeat;
+  height: 100%;
+}
+
+.full-height {
+  height: 100%;
+  background: rgba(0, 0, 0, 0.4);
+}
+
+.main-login {
+  background: rgba(0, 0, 0, 0.9);
+  color: #fff;
+}
+
+.frame-login {
+  position: relative;
+  width: 480px;
+}
+
+.form-check-input {
+  margin-top: 7px !important;
+}
+/* END main */
+
+.invalid-feedback {
+  display: block !important;
+}
+
+/* show hidden password */
+a.input-group-text:focus {
+  color: #495057;
+}
+
+a.input-group-text:hover {
+  text-decoration: none;
+}
+
+.input-group-text {
+  background-color: #fff !important;
+  border: none !important;
+}
+
+.input-password {
+  border-right: none !important;
+}
+
+.input-username {
+  border-left: none !important;
+}
+/* END show hidden password */
+
+/* social */
+.social {
+  position: absolute;
+  top: 10px;
+  right: 0px;
+}
+
+i.item-social {
+  color: #fff;
+  font-size: 24px;
+}
+
+div.item-social {
+  padding: 5px 20px;
+}
+
+.social-name-fb,
+.social-name-gg {
+  display: none;
+}
+
+.item-social-fb {
+  background-color: #4267b2;
+  -webkit-transition: 0.5s;
+  cursor: pointer;
+}
+
+.item-social-fb:hover {
+  padding: 5px 50px;
+  -webkit-transition: 0.5s;
+}
+
+.item-social-fb:hover > .social-name-fb {
+  display: inline-block;
+}
+
+.item-social-gg {
+  background-color: #db4a39;
+  -webkit-transition: 0.5s;
+  cursor: pointer;
+}
+
+.item-social-gg:hover {
+  padding: 5px 50px;
+  -webkit-transition: 0.5s;
+}
+
+.item-social-gg:hover > .social-name-gg {
+  display: inline-block;
+  transition: 5s;
+}
+
+a.link-social {
+  text-decoration: none !important;
+}
+/* END social */
+
+/* input */
+.form-control-custom:focus {
+  color: #495057;
+  background-color: #fff;
+  border-color: #ff6600 !important;
+  outline: 0;
+  box-shadow: 0 0 0 0.2rem rgba(255, 145, 0, 0.39) !important;
+}
+
+.form-control-custom-login:focus {
+  border-color: none !important;
+  box-shadow: none !important;
+}
+/* END input */
+
+/* button */
+.btn-confirm {
+  color: #fff !important;
+  background-color: #f26c39 !important;
+  border-color: #eb5419 !important;
+}
+
+.btn-confirm:hover {
+  background-color: #eb4f12 !important;
+  border-color: #ee5c22 !important;
+}
+
+.btn-confirm:focus {
+  box-shadow: 0 0 0 0.2rem rgba(180, 121, 72, 0.5) !important;
+}
+/* END button */
+
+/* register */
+table {
+  color: white !important;
+}
+
+.table-hover tbody tr:hover {
+  color: #f26c39 !important;
+  background-color: rgba(0, 0, 0, 0.075);
+}
+
+.table-hover tbody > tr.form-group-note:hover {
+  color: #fff !important;
+  cursor: context-menu;
+}
+
+.table-hover tbody > tr > td.check-gender:hover {
+  color: #fff !important;
+}
+
+.form-check-inline:hover {
+  color: #f26c39 !important;
+}
+
+#second-form {
+  display: none;
+}
+/* END register */

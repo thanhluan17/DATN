@@ -1,0 +1,230 @@
+<body>
+<div class="full-height d-flex justify-content-center">
+  <div class="col-5 d-flex align-items-center frame-login">
+    <div class="main-login rounded-lg col-12 p-0">
+      <div class="form-group px-5 py-2 m-0">
+        <h2>Đăng kí tài khoản</h2>
+        <form class="d-inline-flex col-12 px-0 justify-content-center"
+              [formGroup]="form" (ngSubmit)="submitForm()">
+          <!-- first-form -->
+          <table class="table table-hover table-borderless px-0" id="first-form">
+            <tr class="form-group">
+              <td class="col-5 px-0">
+                <label for="username">Username:</label>
+              </td>
+              <td class="px-0">
+                <input type="text" class="form-control form-control-custom" id="username" placeholder="Nhập username"
+                       formControlName="username"/>
+                <div class="invalid-feedback" *ngIf="form.controls.username.touched">
+                  <span *ngIf="form.controls.username.errors?.required">&nbsp;Username không được để trống.</span>
+                  <span *ngIf="form.controls.username.errors?.maxlength">&nbsp;Username quá dài.</span>
+                  <span *ngIf="form.controls.username.errors?.minlength">&nbsp;Username phải ít nhất 6 kí tự.</span>
+                  <span *ngIf="form.controls.username.errors?.pattern">&nbsp;Username không hợp lệ.</span>
+                </div>
+                <div class="invalid-feedback" *ngIf="listError.existAccount">
+                  <span>&nbsp;{{listError.existAccount}}</span>
+                </div>
+              </td>
+            </tr>
+            <tr class="form-group">
+              <td class="col-5 px-0">
+                <label for="password">Mật khẩu:</label>
+              </td>
+              <td class="px-0 input-group">
+                <input [type]="textType === true ? 'text' : 'password'"
+                       class="form-control form-control-custom input-password"
+                       placeholder="Nhập mật khẩu" id="password" formControlName="password" #passwordInput/>
+                <section class="input-group-append" (click)="toggleShowHide()">
+                  <span class="input-group-text">
+                    <i *ngIf="textType" class="fa fa-eye"></i>
+                    <i *ngIf="!textType" class="fa fa-eye-slash"></i>
+                  </span>
+                </section>
+                <div class="invalid-feedback" *ngIf="form.controls.password.touched">
+                  <span *ngIf="form.controls.password.errors?.required">&nbsp;Mật khẩu không được để trống.</span>
+                  <span *ngIf="form.controls.password.errors?.maxlength">&nbsp;Mật khẩu quá dài.</span>
+                  <span *ngIf="form.controls.password.errors?.minlength">&nbsp;Mật khẩu phải ít nhất 8 kí tự.</span>
+                  <span *ngIf="form.controls.password.errors?.pattern">&nbsp;Mật khẩu không hợp lệ.</span>
+                </div>
+              </td>
+            </tr>
+            <tr class="form-group">
+              <td class="col-5 px-0">
+                <label for="password">Nhập lại mật khẩu:</label>
+              </td>
+              <td class="px-0 input-group px-0">
+                <input [type]="textType === true ? 'text' : 'password'"
+                       class="form-control form-control-custom input-password" formControlName="confirmPassword"
+                       placeholder="Nhập mật khẩu" id="confirmPassword" #repasswordInput
+                       (change)="checkConfirmPassword(passwordInput.value, repasswordInput.value)"/>
+                <section class="input-group-append" (click)="toggleShowHide()">
+                  <span class="input-group-text">
+                    <i *ngIf="textType" class="fa fa-eye"></i>
+                    <i *ngIf="!textType" class="fa fa-eye-slash"></i>
+                  </span>
+                </section>
+                <div class="invalid-feedback" *ngIf="!isMatchPassword">
+                  <span>&nbsp;Mật khẩu không khớp.</span>
+                </div>
+                <div class="invalid-feedback" *ngIf="form.controls.confirmPassword.touched">
+                  <span *ngIf="form.controls.confirmPassword.errors?.required">&nbsp;Mật khẩu không được để trống.</span>
+                </div>
+              </td>
+            </tr>
+            <tr class="form-group">
+              <td class="col-5 px-0">
+                <label for="email">Email:</label>
+              </td>
+              <td class="px-0">
+                <input type="email" class="form-control form-control-custom" id="email" placeholder="Nhập email"
+                       formControlName="email"/>
+                <div class="invalid-feedback" *ngIf="form.controls.email.touched">
+                  <span *ngIf="form.controls.confirmPassword.errors?.required">&nbsp;Email không được để trống.</span>
+                  <span *ngIf="form.controls.confirmPassword.errors?.pattern">&nbsp;Email không đúng định dạng.</span>
+                  <span *ngIf="form.controls.confirmPassword.errors?.maxlength">&nbsp;Email quá dài.</span>
+                </div>
+                <div class="invalid-feedback" *ngIf="listError.existEmail">
+                  <span>&nbsp;{{listError.existEmail}}</span>
+                </div>
+              </td>
+            </tr>
+            <tr class="form-group">
+              <td class="col-5 px-0"></td>
+              <td class="px-0 d-flex justify-content-end">
+                <span class="btn btn-confirm col-6" (click)="secondForm()">Tiếp theo</span>
+              </td>
+            </tr>
+          </table>
+          <!-- END first-form -->
+          <!-- second-form -->
+          <table class="table table-hover table-borderless px-0" id="second-form">
+            <tr class="form-group">
+              <td class="col-5 px-0">
+                <label for="fullname">Họ và tên:</label>
+              </td>
+              <td class="px-0">
+                <input type="text" class="form-control form-control-custom" id="fullname" placeholder="Nhập họ và tên"
+                       formControlName="name"/>
+                <div class="invalid-feedback" *ngIf="form.controls.name.touched">
+                  <span *ngIf="form.controls.name.errors?.required">&nbsp;Họ và tên không được để trống.</span>
+                  <span *ngIf="form.controls.name.errors?.pattern">&nbsp;Họ và tên không hợp lệ.</span>
+                  <span *ngIf="form.controls.name.errors?.maxlength">&nbsp;Họ và tên quá dài.</span>
+                </div>
+              </td>
+            </tr>
+            <tr class="form-group">
+              <td class="col-5 px-0">
+                <label for="dateOB">Ngày sinh:</label>
+              </td>
+              <td class="px-0">
+                <input type="date" class="form-control form-control-custom" id="dateOB" formControlName="birthday"/>
+                <div class="invalid-feedback" *ngIf="form.controls.birthday.touched">
+                  <span *ngIf="form.controls.birthday.errors?.required">&nbsp;Ngày sinh không được để trống.</span>
+                </div>
+              </td>
+            </tr>
+            <tr class="form-group">
+              <td class="col-5 px-0">
+                <label>Giới tính:</label>
+              </td>
+              <td class="px-0 check-gender">
+                <div class="form-check-inline">
+                  <label class="form-check-label">
+                    <input type="radio" class="form-check-input" value="1" name="gender" formControlName="gender"/>Nam
+                  </label>
+                </div>
+                <div class="form-check-inline">
+                  <label class="form-check-label">
+                    <input type="radio" class="form-check-input" value="2" name="gender" formControlName="gender"/>Nữ
+                  </label>
+                </div>
+                <div class="form-check-inline">
+                  <label class="form-check-label">
+                    <input type="radio" class="form-check-input" value="3" name="gender" formControlName="gender"/>khác
+                  </label>
+                </div>
+                <div class="invalid-feedback" *ngIf="form.controls.gender.touched">
+                  <span *ngIf="form.controls.gender.errors?.required">&nbsp;Hãy chọn giới tính.</span>
+                </div>
+              </td>
+            </tr>
+            <tr class="form-group">
+              <td class="col-5 px-0">
+                <label for="idcode">CMND/CCCD:</label>
+              </td>
+              <td class="px-0">
+                <input type="text" class="form-control form-control-custom" id="idcode" placeholder="Nhập CMND/CCCD"
+                       formControlName="idCard"/>
+                <div class="invalid-feedback" *ngIf="form.controls.idCard.touched">
+                  <span *ngIf="form.controls.idCard.errors?.required">CMND/CCCD không được để trống.</span>&nbsp;
+                  <span *ngIf="form.controls.idCard.errors?.pattern">CMND/CCCD phải là số có 9 hoặc 12 số.</span>&nbsp;
+                  <span *ngIf="listError.existIdCard">&nbsp;{{listError.existIdCard}}</span>
+                </div>
+                <div class="invalid-feedback" *ngIf="listError.existIdCard">
+                  <span>&nbsp;{{listError.existIdCard}}</span>
+                </div>
+              </td>
+            </tr>
+            <tr class="form-group">
+              <td class="col-5 px-0">
+                <label for="phone">Số điện thoại:</label>
+              </td>
+              <td class="px-0">
+                <input type="text" class="form-control form-control-custom" id="phone" placeholder="Nhập số điện thoại"
+                       formControlName="phone"/>
+                <div class="invalid-feedback" *ngIf="form.controls.phone.touched">
+                  <span *ngIf="form.controls.phone.errors?.required">Số điện thoại không được để trống.</span>&nbsp;
+                  <span *ngIf="form.controls.phone.errors?.pattern">Số điện thoại không đúng.</span>
+                </div>
+              </td>
+            </tr>
+            <tr class="form-group">
+              <td class="col-5 px-0">
+                <label>Địa chỉ:</label>
+              </td>
+              <td class="px-0">
+                <select [compareWith]="compareProvince" class="form-control form-control-custom mb-1"
+                        formControlName="province"
+                        (change)="onChangeProvince($event.target.value)">
+                  <option value="" selected disabled>Chọn tỉnh thành</option>
+                  <option *ngFor="let province of provinces" [ngValue]="province">{{province.provinceName}}</option>
+                </select>
+                <br/>
+                <select [compareWith]="compareDistrict" class="form-control form-control-custom mb-1"
+                        formControlName="district"
+                        (change)="onChangeDistrict($event.target.value)">
+                  <option value="" selected disabled>Chọn quận/huyện</option>
+                  <option *ngFor="let district of districts" [ngValue]="district">{{district.districtName}}</option>
+                </select>
+                <br/>
+                <select [compareWith]="compareWard" class="form-control form-control-custom mb-1"
+                        formControlName="ward">
+                  <option value="" selected disabled>Chọn xã/phường</option>
+                  <option *ngFor="let ward of wards" [ngValue]="ward">{{ward.wardName}}</option>
+                </select>
+                <!-- <div class="invalid-feedback">Địa chỉ không được để trống.</div> -->
+              </td>
+            </tr>
+            <tr class="form-group">
+              <td class="col-5 px-0">
+                <span class="btn btn-confirm" (click)="firstForm()">Trở lại</span>
+              </td>
+              <td class="px-0 d-flex justify-content-end">
+                <button type="submit" class="btn btn-confirm col-12" [disabled]="form.invalid">Đăng kí</button>
+              </td>
+            </tr>
+          </table>
+          <!-- END second-form -->
+        </form>
+        <div class="mb-3">
+          <div colspan="2">
+            Bạn đã có tài khoản?&nbsp;
+            <a routerLink="/login">Đăng nhập</a><br/>
+            <small>Sau khi đăng kí thành công, hãy kiểm tra email của bạn để xác thực tài khoản.</small>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</body>

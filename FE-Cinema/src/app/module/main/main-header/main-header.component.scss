@@ -1,0 +1,194 @@
+.header {
+  background-image: url("../../../../assets/layout-images/footer-background.jpg");
+  position: relative;
+  background-size: 100% 100%;
+  height: 111px;
+  z-index: 77;
+}
+
+
+.header-wrap {
+  background-repeat: no-repeat;
+  width: 100%;
+  margin: 0 auto;
+  height: 128px;
+  position: relative;
+  z-index: 999;
+}
+
+.header-wrap .logo-wrap {
+  width: 300px;
+  margin-top: auto;
+  margin-bottom: auto;
+  margin-left: 10px;
+}
+
+.img img {
+  width: 240px;
+  vertical-align: middle;
+  margin-bottom: 15px;
+}
+
+.avatar-image {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+}
+
+.header-content {
+  margin: 0 50px 0 80px;
+  color: white;
+}
+
+.header-wrap .header-content {
+  width: 100%;
+  padding-left: 0;
+  height: 111px;
+  position: relative;
+}
+
+.topbar-group {
+  display: flex;
+  height: auto;
+  width: 100%;
+}
+
+.topbar-group .topbar-left {
+  float: left;
+  width: 70%;
+  height: 70px;
+  margin: auto 0;
+}
+
+.topbar-group .topbar-right {
+  float: right;
+  width: 30%;
+  margin: auto 0;
+}
+
+.search-box {
+  margin: 0 auto;
+  width: 80%;
+  display: flex;
+  height: 100%;
+}
+
+.btn-search {
+  border: #f26b39;
+}
+
+.search-box label {
+  width: 100%;
+}
+
+.input-search {
+  margin: auto 0;
+  width: 80%;
+}
+
+.input-group {
+  position: initial;
+  height: 100%;
+}
+
+.input-group .btn {
+  border: 1px solid #ced4da;
+  box-shadow: none;
+  border-bottom-left-radius: 0;
+  border-top-left-radius: 0;
+  height: 100%;
+}
+
+.input-group .btn-default {
+  margin: auto 0;
+}
+
+.header-wrap .member-register {
+  background: none;
+  width: auto;
+  padding: 10px 0;
+  float: left;
+}
+
+.header-wrap .member-register .register-icon {
+  background: none;
+  margin-top: 0;
+}
+
+.member-register .register-icon {
+  text-align: center;
+  background: #707070;
+  line-height: 32px;
+}
+
+.member-register .register-icon > ul {
+  margin: 0;
+  padding: 0;
+}
+
+.member-register .register-icon > ul li {
+  list-style: none;
+  float: left;
+}
+
+.member-register .register-icon > ul li a {
+  background: none;
+  padding: 0 5px;
+  font-size: 16px;
+  font-weight: 300;
+  height: 26px;
+  line-height: 24px;
+  display: block;
+  text-decoration: none;
+}
+
+.member-register .register-icon > ul li:first-child {
+  width: 95px;
+  padding-right: 0;
+}
+
+.member-register .register-icon > ul li a.register {
+  color: #000;
+  position: relative;
+  font-weight: bold;
+}
+
+.member-register .register-icon > ul li:last-child {
+  width: 102px;
+  float: right;
+  padding-right: 0;
+}
+
+.member-register .register-icon > ul li a.login {
+  color: #fff;
+  background: #005b69;
+  text-align: center;
+  position: relative;
+  font-weight: bold;
+}
+
+.header-wrap .menu-wrap .menu ul {
+  display: flex;
+  align-items: stretch;
+  justify-content: space-between;
+  width: 85%;
+  padding: 0;
+  margin-top: 5px;
+}
+
+.header-wrap .menu-wrap .menu ul li {
+  display: block;
+  text-transform: uppercase;
+  font-family: 'UTMNeutra', sans-serif;
+  flex: 0 1 auto;
+}
+
+
+.header-wrap .menu-wrap .menu ul li a {
+  padding: 10px;
+  color: #000;
+  font-size: 16px;
+  font-weight: bold;
+  text-decoration: none;
+}
+

@@ -1,0 +1,171 @@
+.footer {
+  background-image: url("../../../../assets/layout-images/footer-background.jpg");
+  background-size: 100% 100%;
+  font-size: 16px;
+}
+
+.container {
+  max-width: 1252px;
+}
+
+.footer li {
+  list-style: none;
+}
+
+#list-social {
+  background: #768ea8;
+  padding: 10px 0;
+}
+
+#list-social img {
+  width: 50%;
+}
+
+#list-social ul.list-inline {
+  padding-left: 0;
+  list-style: none;
+  text-align: center;
+}
+
+#list-social ul.list-inline li {
+  display: inline-block;
+  min-width: 5em;
+}
+
+#fb_show #fb_hover {
+  display: none;
+}
+
+#fb_show:hover #fb {
+  display: none;
+}
+
+#fb_show:hover #fb_hover {
+  display: inline-block;
+}
+
+#instagram_show #instagram_hover {
+  display: none;
+}
+
+#instagram_show:hover #instagram {
+  display: none;
+}
+
+#instagram_show:hover #instagram_hover {
+  display: inline-block;
+}
+
+#youtube_show #youtube_hover {
+  display: none;
+}
+
+#youtube_show:hover #youtube {
+  display: none;
+}
+
+#youtube_show:hover #youtube_hover {
+  display: inline-block;
+}
+
+.footer a {
+  color: #000;
+  font-size: 16px;
+}
+
+.footer a:hover {
+  text-decoration: none;
+  color: #768ea8;
+}
+
+.footer .content-1 h3.info, .footer .content-2 h3.info, .footer .content-2 h3.info a, .footer h2 {
+  color: #000;
+  font-size: 16px;
+}
+
+.footer .content-1 {
+  margin-top: 30px;
+}
+
+.footer .content-1 .marg-top26 {
+  margin-top: 0;
+}
+
+#logo-footer {
+  margin-top: 30px;
+  max-width: 100%;
+  max-height: 165px;
+}
+
+.info {
+  font-size: 16px;
+}
+
+.address {
+  margin-top: 20px;
+  line-height: 1.4;
+  padding-right: 15px;
+  margin-bottom: 30px;
+}
+
+.marg-top30 h3 {
+  font-size: 18px;
+  padding-top: 20px;
+  font-weight: 500;
+  text-transform: uppercase;
+  line-height: 1.5;
+}
+
+h3::after {
+  display: block;
+  width: 100px;
+  height: 3px;
+  /* margin-top: 8px; */
+  content: '';
+  background-color: #768ea8;
+}
+
+.marg-top30 .list {
+  padding-top: 10px;
+  padding-left: 0;
+}
+
+.marg-top30 p {
+  padding-top: 10px;
+}
+
+.map-trigger {
+  float: left;
+}
+
+.map-left {
+  padding-left: 10px;
+  position: relative;
+  top: 20px;
+}
+
+.map {
+  padding-bottom: 30px;
+}
+
+#content-map {
+  margin-top: 30px;
+  display: block;
+  position: relative;
+  width: 100%;
+  padding-top: 50%;
+}
+
+#content-map iframe {
+  border: 0;
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+}
+
+.copyright {
+  padding-top: 20px;
+  text-align: right;
+}

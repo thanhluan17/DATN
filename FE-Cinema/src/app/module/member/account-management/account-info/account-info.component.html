@@ -1,0 +1,219 @@
+<div class="container-fluid">
+  <div class="row">
+    <!--        account-manager start-->
+    <div class=" container-fluid  col-lg-3" style="background-color:rgba(168,162,161,0.15); margin-top: 10px">
+      <app-account-nav-bar></app-account-nav-bar>
+    </div>
+    <!--        account-manager end-->
+    <div class="container-fluid col-lg-9">
+      <!--            <div class="card" style="border-style: solid; border-color: coral">-->
+      <div class="card-title">THÔNG TIN TÀI KHOẢN</div>
+      <div class="card-body">
+        <div>
+          <form [formGroup]="rfEditForm" (ngSubmit)="onSubmit()">
+            <table class="table table-hover table-borderless">
+              <tbody>
+              <tr>
+                <td class="col-2">
+                  <label for="fullName">Họ Tên</label>
+                  <span style="color: red" class="asterisk-red">(*):</span>
+                </td>
+                <td class="col-6">
+                  <input type="text" formControlName="name" class="form-control" placeholder="Nhập Họ Tên "
+                         id="fullName"/>
+                  <span class="text-danger"
+                        *ngIf="rfEditForm.controls.name.touched && rfEditForm.controls.name.errors?.required ">Phải nhập tên và không quá 20 kí tự </span>
+                  <span class="text-danger"
+                        *ngIf="rfEditForm.controls.name.touched && rfEditForm.controls.name.errors?.pattern ">Phải nhập tên và không được để kí tự số,tên không dấu </span>
+                </td>
+              </tr>
+
+              <tr>
+                <td class="col-2">
+                  <label for="birthday">Ngày Sinh</label>
+                  <span style="color: red" class="asterisk-red">(*):</span>
+                </td>
+                <div class="form-group w-33 float-left">
+                  <td>
+                    <input type="date" style="width: 350px" class="form-control" placeholder="12/1/1988"
+                           formControlName="birthday"
+                           id="birthday"/>
+                  </td>
+
+                </div>
+
+              </tr>
+              <tr>
+                <td class="col-2">
+                  <label>Giới Tính</label>
+                  <span style="color: red" class="asterisk-red">(*):</span>
+                </td>
+                <td class="row">
+                               <span class="form-check-inline d-flex">
+                                  <label class="form-check-label">
+                                      <input type="radio" name="gender" class="form-check-input"
+                                             formControlName="gender" [value]="1"/>Nam
+                                    <label style="width: 50px"></label>
+                                  </label>
+                                   <label class="form-check-label">
+                                      <input type="radio" name="gender" class="form-check-input"
+                                             formControlName="gender" [value]="0"/>Nữ
+                                   </label>
+                               </span>
+                </td>
+              </tr>
+              <tr>
+                <td class="col-2">
+                  <label for="email">Email</label>
+                  <span style="color: red" class="asterisk-red">(*):</span>
+                </td>
+                <td class="col-6">
+                  <input type="email" class="form-control" formControlName="email" placeholder="jack@gmail.com"
+                         id="email"/>
+                  <span class="text-danger"
+                        *ngIf="rfEditForm.controls.email.errors?.required">Email Không được để trống</span>
+                  <span class="text-danger" *ngIf="rfEditForm.controls.email.errors?.email">Email phải theo định dạng : abc@abc.abc</span>
+                </td>
+              </tr>
+              <tr>
+                <td class="col-2">
+                  <label for="idCard">CMND</label>
+                  <span style="color: red" class="asterisk-red">(*):</span>
+                </td>
+                <td class="col-6">
+                  <input type="text" class="form-control" placeholder="2015272727" formControlName="idCard"
+                         id="idCard"/>
+                  <span class="text-danger" *ngIf="rfEditForm.controls.idCard.errors?.pattern">CMND không được để trống và phải phải có 10 đến 12 số. </span>
+
+                </td>
+              </tr>
+              <tr>
+                <td class="col-2">
+                  <label for="phone">Số Điện Thoại</label>
+                  <span style="color: red" class="asterisk-red">(*):</span>
+                </td>
+                <td class="col-6">
+                  <input type="text" class="form-control" placeholder="+84225272739" formControlName="phone"
+                         id="phone"/>
+                  <span class="text-danger" *ngIf="rfEditForm.controls.phone.errors?.pattern">bắt buộc và phải có định dạng bao gồm: bắt đầu với +84, và theo sau là 9 đến 10 chữ số. </span>
+                </td>
+              </tr>
+              <tr>
+                <td></td>
+                <td>
+                  <button type="submit" class="btn btn-primary" [disabled]="rfEditForm.invalid">Cập Nhật</button>
+                </td>
+              </tr>
+              </tbody>
+            </table>
+          </form>
+        </div>
+      </div>
+      <!--      info account-->
+      <!--            </div>-->
+      <br>
+      <!--thông tin đăng nhập-->
+      <!--            <div class="card" style="border-style: solid; border-color: coral">-->
+      <div class="card-title"> THÔNG TIN ĐĂNG NHẬP</div>
+      <div class="card-body">
+        <div>
+          <form [formGroup]="rfPasswordForm" (ngSubmit)="onSubmitPass()">
+            <table class="table table-hover table-borderless">
+              <tbody>
+              <!--              <tr>-->
+              <!--                <td style="width: 320px">-->
+              <!--                  <label for="memberCard">Thẻ Thành Viên</label>-->
+              <!--                </td>-->
+              <!--                <td >-->
+              <!--                  <input type="text" class="form-control" placeholder="TV0000001" id="memberCard"/>-->
+              <!--                </td>-->
+              <!--              </tr>-->
+              <!--              <tr>-->
+              <!--                <td>-->
+              <!--                  <label for="account">Tài Khoản</label>-->
+              <!--                  <span style="color: red" class="asterisk-red">(*):</span>-->
+              <!--                </td>-->
+              <!--                <td>-->
+              <!--                  <input type="text" class="form-control" placeholder="Aha0001" id="account"/>-->
+              <!--                </td>-->
+              <!--              </tr>-->
+
+              <tr>
+                <td style="width: 320px">
+                  <label for="passwordOld">Mật Khẩu cũ</label>
+                  <span class="text-danger" style="color: red">(*):</span>
+                </td>
+                <td>
+                  <input type="password" class="form-control" formControlName="oldPassword"
+                         placeholder="Nhập mật khẩu cũ"
+                         id="passwordOld"/>
+                  <p *ngIf="rfPasswordForm.controls.newPassword.touched" class="text-danger">
+                    <span *ngIf="rfPasswordForm.controls.newPassword.errors?.required">Bạn chưa nhập mật khẩu. Vui lòng nhập lại.</span>
+                  </p>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <label for="passwordNew">Mật Khẩu Mới</label>
+                  <span style="color: red" class="asterisk-red">(*):</span>
+                </td>
+                <td>
+                  <input type="password" class="form-control" formControlName="newPassword" placeholder="Mật Khẩu Mới"
+                         id="passwordNew"/>
+                  <p *ngIf="rfPasswordForm.controls.newPassword.touched" class="text-danger">
+                    <span *ngIf="rfPasswordForm.controls.newPassword.errors?.required">Bạn chưa nhập mật khẩu. Vui lòng nhập lại.</span>
+                    <span *ngIf="rfPasswordForm.controls.newPassword.errors?.pattern">Mật khẩu mới phải bao gồm chữ và số và trên 6 kí tự </span>
+                  </p>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <label for="confirmPassword">Xác Nhận Mật Khẩu</label>
+                  <span style="color: red" class="asterisk-red">(*):</span>
+                </td>
+                <td>
+                  <input type="password" class="form-control" formControlName="confirmNewPassword"
+                         placeholder="Xác Nhận Mật Khẩu"
+                         id="confirmPassword" required/>
+                  <p *ngIf="rfPasswordForm.controls.confirmNewPassword.touched" class="text-danger">
+                <span *ngIf="rfPasswordForm.controls.confirmNewPassword.errors?.required">
+                  Bạn chưa nhập mật khẩu. Vui lòng nhập lại.
+                </span>
+                    <span *ngIf="rfPasswordForm.hasError('passwordNotMatch')">
+                  Không trùng với mật khẩu mới, xin nhập lại
+                </span>
+                  </p>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <label>Mã OTP</label>
+                  <span style="color: red" class="asterisk-red">(*):</span>
+                </td>
+                <td>
+                  <div class="input-group mr-12">
+                    <div class="input-group pd-12 w-50">
+                      <button type="button" class="btn btn-warning" (click)="sendEmailOTP()">Lấy Mã OTP</button>
+                    </div>
+                    <div class="input-group pd-20 w-50">
+                      <input (input)="changeInputEmailOTP($event.target.value)" type="text"
+                             style="width: 150px;padding: revert" class="form-control underline"
+                             placeholder="Nhập Mã OTP" id="otp " maxlength="6" size="6"/></div>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td></td>
+                <td>
+                  <button type="submit" class="btn btn-primary ">Đổi Mật Khẩu</button>
+                </td>
+              </tr>
+              </tbody>
+            </table>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+

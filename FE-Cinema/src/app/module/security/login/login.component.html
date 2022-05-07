@@ -1,0 +1,86 @@
+<body>
+<div class="full-height d-flex justify-content-center">
+  <div class="d-flex align-items-center frame-login">
+    <div class="main-login rounded-lg col-12 p-0">
+      <div class="form-group p-5 m-0">
+        <h2>Đăng nhập</h2>
+        <form [formGroup]="form" (ngSubmit)="submitForm()">
+          <div class="form-group">
+            <label for="username">Username:</label>
+            <div class="input-group">
+              <div class="input-group-append">
+                  <span class="input-group-text rounded-left">
+                      <i class="fas fa-user" aria-hidden="true"></i>
+                  </span>
+              </div>
+              <input type="text" class="form-control form-control-custom-login input-username border-0" id="username"
+                     placeholder="Nhập username" formControlName="username"/>
+            </div>
+            <div class="invalid-feedback" *ngIf="form.controls.username.touched">
+              <span *ngIf="form.controls.username.errors?.required">Username không được để trống.&nbsp;</span>
+              <span *ngIf="form.controls.username.errors?.pattern">Username không hợp lệ.&nbsp;</span>
+              <span *ngIf="form.controls.username.errors?.maxlength">Username quá dài.&nbsp;</span>
+              <span *ngIf="form.controls.username.errors?.minlength">Username phải ít nhất 6 kí tự.&nbsp;</span>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="password">Mật khẩu:</label>
+            <div class="input-group" id="show_hide_password">
+              <div class="input-group-append">
+                  <span class="input-group-text rounded-left">
+                      <i class="fas fa-lock" aria-hidden="true"></i>
+                  </span>
+              </div>
+              <input [type]="textType === true ? 'text' : 'password'"
+                     class="form-control form-control-custom-login input-password border-0"
+                     placeholder="Nhập mật khẩu" id="password" formControlName="password"/>
+              <div class="input-group-append" (click)="toggleShowHide()">
+                <span class="input-group-text">
+                  <i *ngIf="textType" class="fa fa-eye"></i>
+                  <i *ngIf="!textType" class="fa fa-eye-slash"></i>
+                </span>
+              </div>
+            </div>
+            <div class="invalid-feedback" *ngIf="form.controls.password.touched">
+              <span *ngIf="form.controls.password.errors?.required">Mật khẩu không được để trống.&nbsp;</span>
+              <span *ngIf="form.controls.password.errors?.minlength">Mật khẩu phải ít nhất 6 kí tự.&nbsp;</span>
+              <span *ngIf="form.controls.password.errors?.maxlength">Mật khẩu quá dài.&nbsp;</span>
+            </div>
+          </div>
+          <div class="notification-center invalid-feedback text-center">
+            <span *ngIf="statusAccountMessage != ''">{{statusAccountMessage}}&nbsp;</span>
+            <span *ngIf="wrongAccountMessage != ''">{{wrongAccountMessage}}&nbsp;</span>
+          </div>
+          <button type="submit" class="btn btn-confirm btn-block mb-4 mt-2">Đăng nhập</button>
+          <div class="bottom-option my-3">
+            <div class="d-flex justify-content-between">
+              <div class="form-group form-check">
+                <label class="form-check-label">
+                  <input class="form-check-input" type="checkbox" formControlName="remember"/>Ghi nhớ tôi.
+                </label>
+              </div>
+              <div>
+                <a routerLink="/register" href="">Đăng kí tài khoản ngay</a>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+      <div class="social">
+        <div class="link-social">
+          <div class="mb-2 item-social item-social-gg rounded-left" #loginRef>
+            <i class="fab fa-google item-social"></i>
+            <span class="social-name-gg text-white font-weight-bold rounded-left">oogle</span>
+          </div>
+        </div>
+        <div class="link-social" (click)="updatingFunction()">
+          <div class="mb-2 item-social item-social-fb rounded-left">
+            <i class="fab fa-facebook-square item-social"></i>
+            <span class="social-name-fb text-white font-weight-bold">&nbsp;Facebook</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</body>

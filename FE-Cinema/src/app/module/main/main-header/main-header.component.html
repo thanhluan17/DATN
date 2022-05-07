@@ -1,0 +1,148 @@
+<div class="header">
+  <div class="header-wrap clearfix d-flex">
+    <div class="logo-wrap img">
+      <a routerLink="/" title="Trang chủ" tabindex>
+        <img src="../../../../assets/layout-images/logo.png" alt="Logo C11" class="img-logo">
+      </a>
+    </div>
+    <div class="header-content">
+      <div class="topbar-wrap">
+        <div class="topbar-group clearfix">
+          <div class="topbar-left">
+            <!--Search box-->
+            <div class="search-box">
+              <div class="w-100" role="search">
+                <form class="form-inline my-2 my-lg-0 search-box">
+                  <input class="form-control mr-sm-2 input-search" tabindex  type="search"
+                         #keySearch id="header-search-input" (keyup.enter)="search(keySearch.value)"
+                         placeholder="Nhập từ khóa để tìm kiếm" aria-label="Search">
+                  <button class="btn btn-info my-2 my-sm-0" tabindex (click)="search(keySearch.value)"><i class="fas fa-search"></i></button>
+                </form>
+              </div>
+            </div>
+          </div>
+          <div class="topbar-right" id="welcome-header">
+            <!--Member register-->
+            <div class="member-register" *ngIf="!user">
+              <div id="pnlNotLogin">
+                <div class="register-icon">
+                  <ul class="clearfix">
+                    <li>
+                      <a class="register" routerLink="/register" tabindex *ngIf="!username">Đăng ký</a>
+                    </li>
+                    <li>
+                      <a class="login" routerLink="/login" tabindex>Đăng nhập</a>
+                    </li>
+
+                  </ul>
+
+                </div>
+              </div>
+            </div>
+            <div *ngIf="user && role == 'ROLE_MEMBER'">
+              <div class="dropdown">
+                <img [src]="user.avatarUrl" alt="" class="avatar-image">
+                <button type="button" class="btn dropdown-toggle" data-toggle="dropdown">
+                  Xin chào, <span>{{user.name}}</span>
+                </button>
+                <div class="dropdown-menu">
+                  <a class="dropdown-item" routerLink="/member/info">
+                    <i class="far fa-id-card"></i> Hồ sơ cá nhân</a>
+                  <a class="dropdown-item" routerLink="/logout">
+                    <i class="fas fa-sign-out-alt"></i> Đăng xuất</a>
+
+                </div>
+              </div>
+            </div>
+            <div *ngIf="user && role == 'ROLE_ADMIN'">
+              <div class="dropdown">
+                <img [src]="user.avatarUrl" alt="" class="avatar-image">
+                <button type="button" class="btn dropdown-toggle" data-toggle="dropdown">
+                  Xin chào, <span>{{user.name}}</span>
+                </button>
+                <div class="dropdown-menu">
+                  <a class="dropdown-item" routerLink="/member/info">
+                    <i class="far fa-id-card"></i> Hồ sơ cá nhân</a>
+                  <a class="dropdown-item" routerLink="/admin/movie-ticket">
+                    <i class="far fa-calendar-check"></i> Quản lý suất chiếu</a>
+                  <a class="dropdown-item" routerLink="/admin/room">
+                    <i class="fas fa-person-booth"></i> Quản lý phòng chiếu</a>
+                  <a class="dropdown-item" routerLink="/employee/member/management">
+                    <i class="fas fa-users"></i> Quản lý thành viên</a>
+                  <a class="dropdown-item" routerLink="/employee/sale/tickets">
+                    <i class="fas fa-hand-holding-usd"></i> Quản lý bán vé</a>
+                  <a class="dropdown-item" routerLink="/admin/movie/movie-list">
+                    <i class="fas fa-film"></i> Quản lý phim</a>
+                  <a class="dropdown-item" routerLink="/logout">
+                    <i class="fas fa-sign-out-alt"></i> Đăng xuất</a>
+
+                </div>
+              </div>
+            </div>
+            <div *ngIf="user && role == 'ROLE_EMPLOYEE'">
+              <div class="dropdown">
+                <img [src]="user.avatarUrl" width="20%" height="20%" class="rounded-circle">
+                <button type="button" class="btn dropdown-toggle" data-toggle="dropdown">
+                  Xin chào, <span>{{user.name}}</span>
+                </button>
+                <div class="dropdown-menu">
+                  <a class="dropdown-item" routerLink="/member/info">
+                    <i class="far fa-id-card"></i> Hồ sơ cá nhân</a>
+                  <a class="dropdown-item" routerLink="/employee/member/management">
+                    <i class="fas fa-users"></i> Quản lý thành viên</a>
+                  <a class="dropdown-item" routerLink="/employee/sale/tickets">
+                    <i class="fas fa-hand-holding-usd"></i> Quản lý bán vé</a>
+                  <a class="dropdown-item" routerLink="/logout">
+                    <i class="fas fa-sign-out-alt"></i> Đăng xuất</a>
+
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="menu-wrap">
+          <div class="menu">
+            <ul>
+              <li>
+                <a routerLink="/sale/tickets" *ngIf="role == 'ROLE_EMPLOYEE' || role == 'ROLE_ADMIN'"
+                   title="Mua vé" tabindex>
+                  <span class="item-ticket">Mua vé</span>
+                </a>
+                <a routerLink="/booking/movie" *ngIf="role != 'ROLE_EMPLOYEE' && role != 'ROLE_ADMIN'"
+                   title="Mua vé" tabindex>
+                  <span class="item-ticket">Mua vé</span>
+                </a>
+              </li>
+              <li>
+                <a routerLink="/ticket-price" title="Rạp & Giá vé" tabindex>
+                  <span class="item-fare">Rạp & Giá vé</span>
+                </a>
+              </li>
+              <li>
+                <a routerLink="/movie-corner" title="Góc điện ảnh" tabindex>
+                  <span class="item-cinema-corner">Góc điện ảnh</span>
+                </a>
+              </li>
+              <li>
+                <a routerLink="/events" title="Sự kiện" tabindex>
+                  <span class="item-event">Sự kiện</span>
+                </a>
+              </li>
+              <li>
+                <a routerLink="/instructions" title="Hướng dẫn" tabindex>
+                  <span class="item-instruction">Hướng dẫn</span>
+                </a>
+              </li>
+              <li>
+                <a routerLink="/policy" title="Chính sách" tabindex>
+                  <span class="item-policy">Chính sách</span>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
