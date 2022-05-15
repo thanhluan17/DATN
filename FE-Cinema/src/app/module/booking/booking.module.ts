@@ -8,13 +8,18 @@ import { MovieSelectedComponent } from './movie-selected/movie-selected.componen
 import { MovieSelectionComponent } from './movie-selection/movie-selection.component';
 import { SeatSelectionComponent } from './seat-selection/seat-selection.component';
 import { BookingInformationComponent } from './booking-information/booking-information.component';
+import {MainModule} from '../main/main.module';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 
 
 @NgModule({
   declarations: [ConfirmBookingComponent, MainBookingComponent, MovieSelectedComponent, MovieSelectionComponent, SeatSelectionComponent, BookingInformationComponent],
   imports: [
     CommonModule,
-    BookingRoutingModule
+    BookingRoutingModule,
+    MainModule,
+    FormsModule,
+    ReactiveFormsModule
   ]
 })
 export class BookingModule { }

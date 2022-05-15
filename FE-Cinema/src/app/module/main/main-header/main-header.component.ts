@@ -26,7 +26,6 @@ export class MainHeaderComponent implements OnInit {
   ngOnInit(): void {
     if (this.tokenStore.getToken()) {
       const user = this.tokenStore.getUser();
-      console.log(user);
       this.securityService.isLoggedIn = true;
       this.role = user.authorities[0].authority;
       this.username = user.username;

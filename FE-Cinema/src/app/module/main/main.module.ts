@@ -17,11 +17,15 @@ import {PriceTicketClientComponent} from './price-ticket-client/price-ticket-cli
 
 
 @NgModule({
-  declarations: [DetailMovieComponent, MainContentComponent, MainEventComponent, MainFooterComponent, MainHeaderComponent, MainHomePageComponent, MainInstructionComponent, MainPolicyComponent, MainSearchComponent, MovieCornerComponent, MovieTrailerComponent, PriceTicketClientComponent],
-  imports: [
-    CommonModule,
-    MainRoutingModule
-  ]
+    declarations: [DetailMovieComponent, MainContentComponent, MainEventComponent, MainFooterComponent, MainHeaderComponent, MainHomePageComponent, MainInstructionComponent, MainPolicyComponent, MainSearchComponent, MovieCornerComponent, MovieTrailerComponent, PriceTicketClientComponent],
+  exports: [
+    MainHeaderComponent,
+    MainFooterComponent
+  ],
+    imports: [
+        CommonModule,
+        MainRoutingModule
+    ]
 })
 export class MainModule {
 }

@@ -1,35 +1,17 @@
-font{
-  font-family: Roboto, fantasy;
-}
-label{
-  font-size: 16px;
-}
-ul {
-  list-style: none;
-}
-
 .avatar {
   vertical-align: middle;
-  width: 50px;
-  height: 50px;
+  width: 120px;
+  height: 120px;
   border-radius: 50%;
 }
 
-th{
-  font-size: 18px;
-}
-.card-title{
+.card-title {
   font-size: 1.75rem;
   font-weight: bold;
   text-align: center;
   padding: 10px;
-  color: #f26b39;
+  color: #05386B;
 }
-
-table{
-  text-align: justify-all;
-}
-
 
 /* Style the tab */
 .tab {
@@ -51,14 +33,12 @@ table{
 }
 
 
-/* Change background color of buttons on hover */
-.tab button:hover {
-  background-color: #ddd;
-}
-
 /* Create an active/current tablink class */
 .tab button.active {
   background-color: #ccc;
 }
 
-.w3-button:hover{color:#000!important;background-color:#ccc!important}
+.w3-button:hover {
+  color: #000 !important;
+  background-color: #ccc !important
+}

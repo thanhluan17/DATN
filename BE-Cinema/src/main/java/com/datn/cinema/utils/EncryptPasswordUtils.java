@@ -10,7 +10,7 @@ public class EncryptPasswordUtils {
 
     public static void main(String[] args) {
         BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
-        String passwordEncode = encoder.encode("1234567");
+        String passwordEncode = encoder.encode("12345");
         System.out.println(passwordEncode);
     }
 

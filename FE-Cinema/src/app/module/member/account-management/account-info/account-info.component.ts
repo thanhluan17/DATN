@@ -1,12 +1,12 @@
 import {Component, OnInit} from '@angular/core';
 import {AbstractControl, FormBuilder, FormGroup, Validators} from '@angular/forms';
-import {User} from '../../../../entity/user';
-import {AccountManagementService} from '../../../../service/member/account-management.service';
 import {ActivatedRoute, Router} from '@angular/router';
 import {ToastrService} from 'ngx-toastr';
 import {TokenStorageService} from '../../../../service/security/token-storage.service';
+import {User} from '../../../../entity/user';
+import { AccountManagementService } from 'src/app/service/member/account-management.service';
 import {AccountDTO} from '../../../../entity/accountDTO';
-
+import {Account} from '../../../../entity/account';
 
 @Component({
   selector: 'app-account-info',
@@ -45,12 +45,12 @@ export class AccountInfoComponent implements OnInit {
 
   private initForm() {
     this.rfEditForm = this.formBuilder.group({
-      name: ['', [Validators.required, Validators.pattern('^[a-zA-Z ]+$'), Validators.maxLength(20)]],
+      name: ['', [Validators.required]],
       birthday: ['', [Validators.required]],
       gender: ['', [Validators.required]],
       email: ['', [Validators.required, Validators.email, Validators.maxLength(30)]],
-      idCard: ['', [Validators.required, Validators.pattern('^[0-9]{10,12}$')]],
-      phone: ['', [Validators.required, Validators.pattern('^\\+84[0-9]{9,10}$')]],
+      idCard: ['', [Validators.required, Validators.pattern('^[0-9]{9,12}$')]],
+      phone: ['', [Validators.required, Validators.pattern('^[0-9]{10}$')]],
     });
   }
 
@@ -78,7 +78,6 @@ export class AccountInfoComponent implements OnInit {
   }
 
   private initFormPassword() {
-
     this.rfPasswordForm = this.formBuilder.group({
       oldPassword: ['', [Validators.required, Validators.pattern(/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{6,}$/)]],
       newPassword: ['', [Validators.required, Validators.pattern(/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{6,}$/)]],

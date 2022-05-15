@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {AccountManagementService} from '../../../../service/member/account-management.service';
 import {TokenStorageService} from '../../../../service/security/token-storage.service';
 import {User} from '../../../../entity/user';
+import {Account} from '../../../../entity/account';
 
 @Component({
   selector: 'app-account-nav-bar',
@@ -18,7 +19,6 @@ export class AccountNavBarComponent implements OnInit {
               private tokenStore: TokenStorageService
   ) {
     this.username = this.tokenStore.getUser().user.account.username;
-    console.log(this.tokenStore.getUser());
   }
 
 
@@ -30,7 +30,6 @@ export class AccountNavBarComponent implements OnInit {
   getPasswordOld() {
     this.accountManagementService.getPasswordOld(this.username).subscribe(data => {
       this.accounts = data;
-      console.log(data);
     }, error => {
       // console.log("Get " + error + " on getInfoUser()");
     });
@@ -40,7 +39,6 @@ export class AccountNavBarComponent implements OnInit {
     this.accountManagementService.getUserByUserName(this.username).subscribe(data => {
       // this.rfEditForm.patchValue(data)
       this.user = data;
-      console.log(data);
     }, error => {
       console.log('Get ' + error + ' on getInfoUser()');
     });

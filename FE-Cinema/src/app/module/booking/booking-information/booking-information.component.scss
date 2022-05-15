@@ -1,0 +1,116 @@
+$font: 'Open Sans', sans-serif;
+$color : #768ea8;
+
+@media screen and (max-width: 905px) {
+
+  .follow-title {
+    display: none;
+  }
+  #active {
+    display: block;
+  }
+}
+@media screen and (max-width: 773px){
+  .container-fluid {
+    display: block;
+  }
+  #table-booking-infor {
+    margin-top: 1.5rem;
+  }
+  .pleasure {
+    left: 20%;
+    margin-left: 0;
+    padding-left: 0;
+  }
+}
+@media screen and (max-width: 576px){
+  #img-div {
+    width: 18rem;
+    height: 100%;
+  }
+}
+#fluid {
+  padding-left: 2rem;
+  margin: 3rem 0;
+  font-family: $font;
+  font-size: 1rem;
+}
+
+#follow-div {
+  font-size: 1.2rem;
+}
+
+.follow {
+  width: fit-content;
+}
+.follow-title:hover {
+  cursor: pointer;
+}
+
+.follow-title {
+  padding-top: 0.375rem;
+  margin-bottom: 0;
+  height: 2.3rem;
+  text-transform: uppercase;
+  text-align: center;
+  border-bottom: 2px solid $color;
+}
+#active {
+  background-color: $color;
+  color: white;
+}
+
+hr {
+  margin-top: 0;
+}
+thead tr td {
+  border-top: none;
+  border-bottom: 2px solid crimson;
+}
+tbody tr td {
+  text-align: left;
+}
+.movie-picked-title {
+  text-transform: uppercase;
+  font-size: 1.65rem;
+  color: black;
+  text-align: center;
+}
+#table-booking-infor {
+  text-align: left;
+}
+#table-booking-infor td:first-child {
+  padding-left: 2rem;
+}
+#table-booking-infor td:last-child {
+  padding-right: 0;
+}
+#table-personal-info td:first-child {
+  padding-left: 2rem;
+}
+#img-div {
+  width: 18rem;
+  height: 100%;
+}
+img {
+  max-width: 100%;
+  max-height: 100%;
+}
+.ticket {
+  margin: 0 0.3rem;
+}
+.pleasure {
+  //position: absolute;
+  font-size: 0.75rem;
+  color: #383838;
+  left: 30%;
+}
+#btnConfirm a, #btnConfirm button, .pleasure a {
+  margin: 1rem;
+}
+.fa-arrow-right, .fa-arrow-left {
+  width: 5rem;
+}
+.red {
+  color: red;
+}

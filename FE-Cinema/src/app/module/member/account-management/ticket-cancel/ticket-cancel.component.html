@@ -1,1 +1,10 @@
-<p>ticket-cancel works!</p>
+<h3>Xác Nhận Thông Tin Hủy Vé !</h3>
+<hr>
+<div class="modal-body">
+  Bạn Có Chắc Muốn Hủy Bộ Phim  <label style="color: rgba(255,110,64,0.75)"> {{deleteTitle}}</label> Không ?
+  <p>Hành động này không thể được hoàn tác !</p>
+</div>
+<div class="row d-flex justify-content-end">
+  <button class="btn btn-success" style="width: 100px;margin-right: 20px" data-dismiss="modal" id="closeModal"  >Thoát</button>
+  <button class="btn btn-danger mr-3" style="width: 100px" (click)="deletePost()" data-dismiss="modal">Hủy</button>
+</div>

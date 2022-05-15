@@ -20,6 +20,7 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import {AdminMovieManagementModule} from './module/admin/admin-movie-management/admin-movie-management.module';
 import {AdminMovieTicketManagementModule} from './module/admin/admin-movie-ticket-management/admin-movie-ticket-management.module';
 import {ToastrModule} from 'ngx-toastr';
+import {AccountManagementModule} from './module/member/account-management/account-management.module';
 
 @NgModule({
   declarations: [
@@ -40,6 +41,7 @@ import {ToastrModule} from 'ngx-toastr';
     SecurityModule,
     BookingModule,
     AdminMovieTicketManagementModule,
+    AccountManagementModule,
     ReactiveFormsModule,
     RouterModule,
     FormsModule,

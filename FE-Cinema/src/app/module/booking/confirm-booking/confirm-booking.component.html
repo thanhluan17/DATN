@@ -1,1 +1,138 @@
-<p>confirm-booking works!</p>
+<div class="container-fluid" id="fluid">
+  <div id="follow-div" class="row m-0 p-0">
+    <div class="follow col-lg-3 col-md-3">
+      <p class="follow-title">chọn phim</p>
+    </div>
+    <div class="follow col-lg-3 col-md-3">
+      <p class="follow-title" (click)="back()">chọn ghế</p>
+    </div>
+    <div class="follow col-lg-3 col-md-3">
+      <p class="follow-title" id="active">xác nhận đặt vé</p>
+    </div>
+    <div class="follow col-lg-3 col-md-3">
+      <p class="follow-title">thông tin đặt vé</p>
+    </div>
+  </div>
+  <div class="container-fluid row p-0 m-0 mt-3">
+    <div class="col-lg-3 col-md-4" id="img-div">
+      <img [src]="movieTicket.movie.posterMovie"
+           alt="img">
+    </div>
+    <div class="col-lg-7 col-md-8 pl-3" *ngIf="movieTicket">
+      <table class="table table-hover" id="table-booking-infor">
+        <thead class="text-center">
+        <tr>
+          <td colspan="2">
+            <span class="movie-picked-title">{{movieTicket.movie.movieName}}</span>
+          </td>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+          <td>Rạp</td>
+          <td>
+            <p class="red">{{movieTicket.room.roomName}}</p>
+          </td>
+        </tr>
+        <tr>
+          <td>Ngày chiếu</td>
+          <td class="red">{{movieTicket.showDate | date:'dd-MM-yyyy'}}</td>
+        </tr>
+        <tr>
+          <td>Giờ chiếu</td>
+          <td class="red">{{movieTicket.showTime.showTime}}</td>
+        </tr>
+        <tr>
+          <td>Ghế</td>
+          <td>
+            <span *ngFor="let roomSeat of listChoseSeat; let i = index">
+              {{roomSeat.seat.row.rowName}}{{roomSeat.seat.column.columnName}}
+              <span *ngIf="i != listChoseSeat.length - 1">,</span>
+            </span>
+          </td>
+        </tr>
+        <tr>
+          <td>Vé</td>
+          <td>
+            <div class="col-12 row m-0 p-0">
+              <div class="col-lg-6 col-md-5 col-sm-5 col-5">
+                <p>
+                  <strong>Số ghế</strong>
+                </p>
+                <p *ngFor="let roomSeat of listChoseSeat">
+                  {{roomSeat.seat.row.rowName}}{{roomSeat.seat.column.columnName}}
+                </p>
+                <p>
+                  <strong>Tổng tiền</strong>
+                </p>
+              </div>
+              <div class="col-lg-6 col-md-7 col-sm-7 col-7">
+                <p>
+                  <strong>Giá vé</strong>
+                </p>
+                <div *ngFor="let roomSeat of listChoseSeat">
+                  <p *ngIf="roomSeat.seat.seatType.seatTypeId == 1">{{movieTicket.ticketPrice | number}} VND</p>
+                  <p *ngIf="roomSeat.seat.seatType.seatTypeId == 2">{{movieTicket.ticketPrice * (4 / 3) | number}}
+                    VND</p>
+                </div>
+                <p>
+                  <strong>{{totalMoney | number}} VND</strong>
+                </p>
+              </div>
+            </div>
+          </td>
+        </tr>
+        </tbody>
+      </table>
+
+      <table class="table table-hover table-personal-info" *ngIf="user">
+        <thead>
+        <tr>
+          <td colspan="2">
+            <p class="movie-picked-title" style="font-size: 1.3rem">thông tin cá nhân</p>
+          </td>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+          <td>Họ và tên</td>
+          <td>{{user.name}}</td>
+        </tr>
+        <tr>
+          <td>Email</td>
+          <td>{{user.email}}</td>
+        </tr>
+        <tr>
+          <td>CMND</td>
+          <td>{{user.idCard}}</td>
+        </tr>
+        <tr>
+          <td>Số điện thoại</td>
+          <td>{{user.phone}}</td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="col-lg-2"></div>
+  </div>
+  <div class="row">
+    <div class="col-lg-6 text-right font-weight-bold">Thanh toán</div>
+    <div class="col-lg-6" #paypal></div>
+  </div>
+  <div id="btnConfirm" *ngIf="!isConfirmed" class="text-center">
+    <a>
+      <button class="btn btn-outline-primary rounded-pill" type="button" (click)="back()">
+        <span class="arrow">
+          <i class="fas fa-2x fa-arrow-left"></i>
+        </span>
+      </button>
+    </a>
+    <button class="btn btn-outline-primary rounded-pill" type="button" (click)="confirmCreate()">
+        <span class="ticket">
+          <img src="../../../../assets/img/cinema-ticket.png" height="34" width="34"/>
+        </span>
+      Dặt vé
+    </button>
+  </div>
+</div>
+

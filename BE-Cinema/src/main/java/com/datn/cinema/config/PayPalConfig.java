@@ -13,9 +13,9 @@ import java.util.Map;
 @Configuration
 public class PayPalConfig {
 
-    @Value("${paypal.client.app}")
+    @Value("Ab_hzWp-kJ1PNyG66SS-VKMi0eHYnf2Rl09cyFvi_rqgenO74_swgYtLp-VmLUtDD5Cgx4yVgTKL9_TW")
     private String clientId;
-    @Value("${paypal.client.secret}")
+    @Value("ENVervcb1gBn0JIyL8TJGTja5zNX-BBlI-seLLSiPbYXDFBMWHxCvlnJCyxzX1XCHJT6a8pGNUye0j9X")
     private String clientSecret;
     @Value("${paypal.mode}")
     private String mode;
