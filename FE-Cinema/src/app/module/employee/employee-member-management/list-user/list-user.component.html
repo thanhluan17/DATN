@@ -1,1 +1,130 @@
-<p>list-user works!</p>
+<div class="container-xl ">
+  <div class="table-responsive">
+    <div class="table-wrapper">
+      <div class="table-header">
+        <p class="title">Quản Lý Thành Viên</p>
+      </div>
+      <div class="row p-0 m-0">
+        <div class="col-3">
+          <a routerLink="/employee/member/management/create" class="btn btn-success btnCreate">
+            <i class="fas fa-plus"></i>
+            <span>Thêm Thành Viên</span>
+          </a>
+        </div>
+        <div class="col-5"></div>
+        <div class="col-4 float-right d-inline-flex">
+          <input type="text" [(ngModel)]="keySearch"
+                 (keyup.enter)="searchEnter()"
+                 placeholder="Nhập thông tin mà bạn muốn tìm kiếm "
+                 class="form-control rounded-pill inputSearch" style="width: 80%">
+          <button class="btn btnSearch"
+                  (click)="search()">
+            <i class="fas fa-search"></i>
+          </button>
+        </div>
+      </div>
+      <table class="table table-striped table-hover">
+        <thead>
+        <tr>
+          <th>STT</th>
+          <th>Mã</th>
+          <!--              <th>Username</th>-->
+          <th>Họ và Tên</th>
+          <th>Email</th>
+          <th>Địa chỉ</th>
+          <th>Trạng Thái</th>
+          <th>Tuỳ Chọn</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let user of users  ; let i=index ">
+          <td>{{ i + 1}}</td>
+          <td *ngIf="user.userId < 10">
+            <span>TV000{{user.userId}}</span>
+          </td>
+          <td *ngIf="user.userId >=10 && user.userId <=99 ">
+            <span>TV00{{user.userId}}</span>
+          </td>
+          <td *ngIf="user.userId >=100 && user.userId <= 999 ">
+            <span>TV0{{user.userId}}</span>
+          </td>
+          <td *ngIf="user.userId >=1000 && user.userId <= 9999 ">
+            <span>TV0{{user.userId}}</span>
+          </td>
+          <!--                            <td>{{user.account.username}}</td>-->
+          <td>{{user.name}}</td>
+          <td>{{user.email}}</td>
+          <td>
+            <span>{{getAddress(user.address)}}</span>
+          </td>
+          <td *ngIf="user.accountStatus.accountStatusId == 1" class="text-info">
+            {{user.accountStatus.accountStatusName}}
+          </td>
+          <td *ngIf="user.accountStatus.accountStatusId == 2" class="text-success">
+            {{user.accountStatus.accountStatusName}}
+          </td>
+          <td *ngIf="user.accountStatus.accountStatusId == 3" class="text-danger">
+            {{user.accountStatus.accountStatusName}}
+          </td>
+          <td>
+            <a [routerLink]="['edit',user.userId]" *ngIf="user.accountStatus.accountStatusId !==3" class="edit"
+               data-toggle="modal"><i
+              class="material-icons"
+              data-toggle="tooltip"
+              title="Edit">&#xE254;</i></a>
+            <a *ngIf="user.accountStatus.accountStatusId !== 3" (click)="deleteId = user.userId; deleteName = user.name"
+               class=" delete" data-target="#deletedModal"
+               data-toggle="modal"><i
+              class="material-icons" title="Delete">&#xE872;</i></a>
+          </td>
+        </tr>
+        </tbody>
+      </table>
+
+      <ul class="pagination modal-4">
+        <li *ngIf="indexPagination > 0"><a (click)="firstPage()" class="prev">
+          <i class="fa fa-chevron-left"></i>
+          Đầu
+        </a>
+        </li>
+        <li *ngIf="indexPagination > 0"><a (click)="previousPage()"><i class="fa fa-chevron-left"></i></a></li>
+        <li *ngIf="indexPagination > 0"><a (click)="selectPage(indexPagination )">{{indexPagination }}</a></li>
+        <li><a class="active">{{indexPagination + 1 }}</a></li>
+        <li *ngIf="indexPagination <= totalPagination -1 "><a
+          (click)="selectPage(indexPagination +2)">{{indexPagination + 2}}</a></li>
+        <!--            <li><a class="active">{{totalPagination +1 | number : '1.0'}}</a></li>-->
+        <li *ngIf="indexPagination <= totalPagination -1 "><a (click)="nextPage()"><i
+          class="fa fa-chevron-right"></i></a></li>
+        <li *ngIf="indexPagination <= totalPagination -1 "><a class="next" (click)="lastPage()"> Cuối
+          <i class="fa fa-chevron-right"></i>
+        </a></li>
+        <li><label>
+          <input type="number" class="form-input-page ml-1"
+                 [(ngModel)]="selectPagination">
+        </label></li>
+        <li><a class="ml-5" (click)="selectPage(selectPagination)">Đi</a></li>
+      </ul>
+      <!--  Modal      -->
+      <div class="modal fade" id="deletedModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+           aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header flex-column">
+              <div class="icon-box">
+              </div>
+              <h4 class="modal-title w-100">Are you sure?</h4>
+              <button type="button" class="close" id="closeModal" data-dismiss="modal" aria-hidden="true">&times;
+              </button>
+            </div>
+            <div class="modal-body">
+              <app-delete-user [deleteId]="deleteId" [deleteName]="deleteName"
+                               (deleteComplete)="deleteSuccess()"></app-delete-user>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!--   Modal       -->
+    </div>
+  </div>
+</div>
+<!--</div>-->

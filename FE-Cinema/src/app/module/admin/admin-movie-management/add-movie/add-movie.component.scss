@@ -1,0 +1,28 @@
+.icon-hide {
+  position: relative;
+  float: left;
+  display: block;
+  left: 87%;
+  font-size: 17px;
+}
+.icon-hide:hover{
+  color: red;
+}
+.container {
+  width: 50vw;
+  clear: both;
+}
+
+.container input {
+  width: 100%;
+  clear: both;
+}
+
+.label {
+  text-align: left;
+  font-size: x-large;
+}
+
+.label:hover {
+  color: #768ea8;
+}

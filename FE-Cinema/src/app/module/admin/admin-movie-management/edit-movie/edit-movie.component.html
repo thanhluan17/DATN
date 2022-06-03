@@ -1,1 +1,183 @@
-<p>edit-movie works!</p>
+<div class="container" >
+  <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 mx-auto"
+       style="font-family: Roboto,sans-serif; color: black; height: 100%;">
+    <div class="tm-bg-primary-dark tm-block tm-block-h-auto">
+      <div class="row">
+        <div class="col-12">
+          <h2 class="tm-block-title d-inline-block mt-3">Chỉnh sửa phim</h2>
+        </div>
+      </div>
+      <form (ngSubmit)="submit()" [formGroup]="formEditMovie">
+        <div class="row tm-edit-product-row">
+          <div class="col-xl-12 col-lg-12 col-md-12">
+            <div class="tm-edit-product-form">
+              <div class="form-group mb-3 mt-3">
+                <h3>Tên phim</h3>
+                <input
+                  class="form-control" formControlName="movieName"
+                  maxlength="100"
+                  placeholder="Chiến tranh giữa các vì sao" type="text"
+                />
+                <div *ngIf="formEditMovie.controls.movieName.errors?.required && formEditMovie.controls.movieName.touched"
+                     class="alert alert-danger">
+                  <i class="fa fa-exclamation-circle"></i><i>Tên phim không được để trống</i>
+                </div>
+              </div>
+              <div class="form-group mb-3">
+                <h3>Poster</h3>
+                <div class="form-inline">
+                  <input (change)="showImage($event)" name="posterMovie" id="file" style="display:none" type="file">
+                  <label *ngIf="imagePoster === null" id="input-image" for="file" class="label"><i class="fas fa-images" style="padding-right:15px"></i>Hãy chọn ảnh
+                  </label>
+                  <div *ngIf="imagePoster !== null">
+                    <img [src]="imagePoster" class="border border-dark" style="width: 174px; height: 110px">
+                    <div class="icon-hide">
+                      <i (click)="removeImage()" class="fa fa-times-circle"></i>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="form-group mb-3 col-xs-12 col-sm-6">
+                  <h3>Ngày bắt đầu</h3>
+                  <input
+                    class="form-control" formControlName="startDate"
+                    type="date"
+                  />
+                  <div
+                    *ngIf="formEditMovie.controls.startDate.errors?.required && formEditMovie.controls.startDate.touched"
+                    class="alert alert-danger">
+                    <i class="fa fa-exclamation-circle"></i><i>Ngày bắt đầu không được để trống</i>
+                  </div>
+                </div>
+                <div class="form-group mb-3 col-xs-12 col-sm-6">
+                  <h3>Ngày kết thúc</h3>
+                  <input
+                    class="form-control" formControlName="endDate"
+                    type="date"
+                  />
+                  <div *ngIf="formEditMovie.controls.endDate.errors?.required && formEditMovie.controls.endDate.touched"
+                       class="alert alert-danger">
+                    <i class="fa fa-exclamation-circle"></i><i>Ngày kết thúc không được để trống</i>
+                  </div>
+                </div>
+              </div>
+              <div class="form-group mb-3">
+                <h3>Studio</h3>
+                <input
+                  class="form-control" formControlName="movieStudio"
+                  maxlength="100"
+                  placeholder="Disney, Fox, HBO, ...."
+                  required type="text"
+                />
+              </div>
+              <div
+                *ngIf="formEditMovie.controls.movieStudio.errors?.required && formEditMovie.controls.movieStudio.touched"
+                class="alert alert-danger">
+                <i class="fa fa-exclamation-circle"></i><i>Studio không được để trống</i>
+              </div>
+              <div class="form-group mb-3">
+                <h3>Diễn viên</h3>
+                <input
+                  class="form-control" formControlName="actor"
+                  maxlength="100"
+                  placeholder="Dave, Bob, Fletcher, ..."
+                  required type="text"
+                />
+              </div>
+              <div *ngIf="formEditMovie.controls.actor.errors?.required && formEditMovie.controls.actor.touched"
+                   class="alert alert-danger">
+                <i class="fa fa-exclamation-circle"></i><i>Diễn viên không được để trống</i>
+              </div>
+              <div class="form-group mb-3">
+                <h3>Đạo diễn</h3>
+                <input
+                  class="form-control" formControlName="director"
+                  maxlength="100"
+                  placeholder="Russo"
+                  required type="text"
+                />
+              </div>
+              <div *ngIf="formEditMovie.controls.director.errors?.required && formEditMovie.controls.director.touched"
+                   class="alert alert-danger">
+                <i class="fa fa-exclamation-circle"></i><i>Đạo diễn không được để trống</i>
+              </div>
+              <div class="form-group mb-3">
+                <h3>Độ dài</h3>
+                <input
+                  class="form-control" formControlName="movieLength"
+                  maxlength="5"
+                  placeholder="Độ dài theo phút"
+                  required type="number"
+                />
+              </div>
+              <div
+                *ngIf="formEditMovie.controls.movieLength.errors?.required && formEditMovie.controls.movieLength.touched"
+                class="alert alert-danger">
+                <i class="fa fa-exclamation-circle"></i><i>Độ dài không được để trống</i>
+              </div>
+              <div class="form-group mb-3">
+                <h3>Link trailer</h3>
+                <input
+                  class="form-control" formControlName="trailer"
+                  placeholder="Link nhúng"
+                  required
+                  type="text"
+                />
+              </div>
+              <div *ngIf="formEditMovie.controls.trailer.errors?.required && formEditMovie.controls.trailer.touched"
+                   class="alert alert-danger">
+                <i class="fa fa-exclamation-circle"></i><i>Link trailer không được để trống</i>
+              </div>
+              <div class="form-group mb-3">
+                <h3>Thể loại</h3>
+                <table>
+                  <tr>
+                    <th *ngFor="let category of listCategory|slice: 0: 7"><input
+                      (click)="selectCategory(category.categoryId)" class="ml-2"
+                      type="checkbox"/> {{category.categoryName}}
+                    </th>
+                  </tr>
+                  <tr>
+                    <th *ngFor="let category of listCategory|slice: 8: 14"><input
+                      (click)="selectCategory(category.categoryId)" class="ml-2"
+                      type="checkbox"/> {{category.categoryName}}
+                    </th>
+                  </tr>
+                </table>
+              </div>
+              <div class="form-group mt-3">
+                <button class="btn btn-secondary mt-3" data-target="#exampleModal" data-toggle="modal" type="button">Huỷ
+                </button>
+                <button [disabled]="formEditMovie.invalid || categoryList.length === 0" class="btn btn-warning ml-5 mt-3"
+                        data-ripple=""
+                        type="submit" >Sửa
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+  <div aria-hidden="true" aria-labelledby="exampleModalLabel" class="modal fade" id="exampleModal" role="dialog"
+       tabindex="-1">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Xác nhận xoá phim</h5>
+          <button aria-label="Close" class="close" data-dismiss="modal" type="button">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          Bạn có chắc chắn muốn huỷ thêm mới phim?
+        </div>
+        <div class="modal-footer">
+          <a class="btn btn-secondary" data-dismiss="modal" type="button">Không</a>
+          <a class="btn btn-primary" data-dismiss="modal" routerLink="/admin/movie/movie-list" type="button">Huỷ</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

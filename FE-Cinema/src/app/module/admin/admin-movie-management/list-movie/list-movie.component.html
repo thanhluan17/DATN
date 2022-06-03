@@ -1,1 +1,79 @@
-<p>list-movie works!</p>
+<a class="btn btn-success btn-lg mt-5 mb-3" routerLink="/admin/movie/add-movie" type="button">Thêm mới phim</a>
+<table class="table table-hover">
+  <thead>
+  <tr>
+    <th>Poster</th>
+    <th>Tên phim</th>
+    <th>Thời gian bắt đầu</th>
+    <th>Thời gian kết thúc</th>
+    <th>Đạo diễn</th>
+    <th>Diễn viên</th>
+    <th>Thời luợng</th>
+    <th>Link trailer</th>
+    <th colspan="2" style="text-align: center">Hành động</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let movie of movieList">
+    <th><a href="{{movie.posterMovie}}">Poster</a></th>
+    <th>{{movie.movieName}}</th>
+    <th>{{movie.startDate}}</th>
+    <th>{{movie.endDate}}</th>
+    <th>{{movie.director}}</th>
+    <th>{{movie.actor}}</th>
+    <th>{{movie.movieLength}}</th>
+    <th><a href="{{movie.trailer}}">Trailer</a></th>
+    <td>
+      <button class="btn btn-danger column8" data-target="#exampleModal" data-toggle="modal" style="color: black"
+              type="button" (click)="getMovieId(movie.movieId)">
+        Xoá
+      </button>
+    </td>
+    <td><a class="btn btn-warning column8" (click)="sendMovieId(movie.movieId)">
+      Sửa
+    </a></td>
+  </tr>
+  </tbody>
+</table>
+<ul class="pagination modal-4">
+  <li *ngIf="page > 0"><a (click)="firstPage()" class="prev">
+    <i class="fa fa-chevron-left"></i>
+    Đầu
+  </a>
+  </li>
+  <li *ngIf="page > 0"><a (click)="previousPage()"><i class="fa fa-chevron-left"></i></a></li>
+  <li *ngIf="page > 0"><a (click)="selectPage(page - 1)">{{page}}</a></li>
+  <li><a class="active">{{page + 1}}</a></li>
+  <li *ngIf="page < totalPages - 1"><a (click)="selectPage(page + 1)">{{page + 2}}</a></li>
+  <li *ngIf="page < totalPages - 1"><a (click)="nextPage()"><i class="fa fa-chevron-right"></i></a></li>
+  <li *ngIf="page < totalPages - 1"><a (click)="lastPage()" class="next"> Cuối
+    <i class="fa fa-chevron-right"></i>
+  </a></li>
+  <li><label>
+    <input [(ngModel)]="selectedPage" class="form-input-page ml-1"
+           type="number">
+  </label></li>
+  <li><a (click)="selectPage(selectedPage - 1)">Đi</a></li>
+</ul>
+
+<div aria-hidden="true" aria-labelledby="exampleModalLabel" class="modal fade" id="exampleModal" role="dialog"
+     tabindex="-1">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Xác nhận xoá phim</h5>
+        <button aria-label="Close" class="close" data-dismiss="modal" type="button">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        Bạn có chắc chắn muốn xoá phim này?
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-secondary" data-dismiss="modal" type="button">Huỷ</button>
+        <button class="btn btn-danger" type="button" data-dismiss="modal" (click)="deleteMovie()">Xoá</button>
+      </div>
+    </div>
+  </div>
+</div>
+

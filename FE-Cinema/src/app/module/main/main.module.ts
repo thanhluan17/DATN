@@ -1,7 +1,5 @@
 import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
-
-import {MainRoutingModule} from './main-routing.module';
 import {DetailMovieComponent} from './detail-movie/detail-movie.component';
 import {MainContentComponent} from './main-content/main-content.component';
 import {MainEventComponent} from './main-event/main-event.component';
@@ -14,6 +12,15 @@ import {MainSearchComponent} from './main-search/main-search.component';
 import {MovieCornerComponent} from './movie-corner/movie-corner.component';
 import {MovieTrailerComponent} from './movie-trailer/movie-trailer.component';
 import {PriceTicketClientComponent} from './price-ticket-client/price-ticket-client.component';
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatInputModule} from '@angular/material/input';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {RouterModule} from '@angular/router';
+import {MatDialogModule} from '@angular/material/dialog';
+import {MatButtonModule} from '@angular/material/button';
+import {MatIconModule} from '@angular/material/icon';
+import {AdminRoutingModule} from '../admin/admin-routing.module';
 
 
 @NgModule({
@@ -22,10 +29,19 @@ import {PriceTicketClientComponent} from './price-ticket-client/price-ticket-cli
     MainHeaderComponent,
     MainFooterComponent
   ],
-    imports: [
-        CommonModule,
-        MainRoutingModule
-    ]
+  imports: [
+    CommonModule,
+    ReactiveFormsModule,
+    RouterModule,
+    FormsModule,
+    MatDialogModule,
+    MatButtonModule,
+    MatIconModule,
+    AdminRoutingModule,
+    MatDatepickerModule,
+    MatFormFieldModule,
+    MatInputModule
+  ]
 })
 export class MainModule {
 }

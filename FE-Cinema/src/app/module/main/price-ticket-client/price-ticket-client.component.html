@@ -1,1 +1,93 @@
-<p>price-ticket-client works!</p>
+<div style="background-image: url(https://assets.isu.pub/document-structure/201119095039-81c9c6ee54cf9d84cd37f8bfacda75ea/v1/fa7693daeda883175fba952e4a65047c.jpg);">
+  <app-main-header></app-main-header>
+  <div class="container-fluid mt-5">
+    <div class="container">
+      <div class="col-xs-12 film-ticket-client">
+        <ol class="breadcrumb">
+          <li>
+            <a href="#" style="color: aliceblue;">Trang Chủ </a>
+          </li>
+          <li class="breadcrumb-item active upper-text" style="color: aliceblue;"> Giá Vé</li>
+        </ol>
+      </div>
+      <div class="row mb-5">
+        <div class="col-4">
+          <div class="titleFilm">
+            <p class="titleD">Ngày Chiếu Phim</p>
+            <mat-form-field appearance="fill">
+              <mat-label>Chọn ngày chiếu phim</mat-label>
+              <input value="" id="pick1" matInput (dateInput)="onChangDate($event.target.value)" [min]="minDate"
+                     [matDatepicker]="picker">
+              <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+              <mat-datepicker #picker></mat-datepicker>
+            </mat-form-field>
+
+          </div>
+        </div>
+        <div class="col-8">
+          <p class="titleD">Giá Vé</p>
+          <div>
+            <button (click)="change()" class="btn {{classButton2D}}">2D</button>
+            <button (click)="change2()" class="btn {{classButton3D}}">3D</button>
+          </div>
+          <div id="side-a">
+            <div class="card">
+              <div class="card-header">Giá Vé 2D</div>
+              <div class="card-body">
+                <table class="table table-striped backgroundTable" *ngIf="date !== null">
+                  <thead class="theadTable">
+                  <tr class="text-dark">
+                    <th>Thời Gian</th>
+                    <th>Giá Tiền</th>
+                  </tr>
+                  </thead>
+                  <tbody>
+                  <tr>
+                    <td><strong>Trước 17h</strong></td>
+                    <td>{{priceTicketBefor17H() | number}} VND</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Sau 17h</strong></td>
+                    <td>{{priceTicketAfter17H() | number}} VND</td>
+                  </tr>
+                  </tbody>
+                </table>
+                <p style="text-align: center; color: red" *ngIf="date === null">Không có dữ liệu để hiển thị</p>
+              </div>
+            </div>
+          </div>
+          <div id="side-b" style="display: none">
+            <div class="card">
+              <div class="card-header">Giá Vé 3D</div>
+              <div class="card-body">
+                <table class="table table-striped inputTable3D" *ngIf="date !== null">
+                  <thead class="theadTable">
+                  <tr class="text-dark">
+                    <th>Thời Gian</th>
+                    <th>Giá Tiền</th>
+                  </tr>
+                  </thead>
+                  <tbody>
+                  <tr>
+                    <td><strong>Trước 17h</strong></td>
+                    <td>
+                      {{priceTicketBefor17H() | number}} VND
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><strong>Sau 17h</strong></td>
+                    <td>{{priceTicketAfter17H() | number}} VND</td>
+                  </tr>
+                  </tbody>
+                </table>
+                <p style="text-align: center; color: red" *ngIf="date === null">Không có dữ liệu để hiển thị</p>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <app-main-footer></app-main-footer>
+</div>

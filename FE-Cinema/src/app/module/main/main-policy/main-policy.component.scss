@@ -1,0 +1,44 @@
+#home-contents {
+  background-image: url("../../../../assets/layout-images/background-with-bokeh-light-effect.jpg");
+  background-position: right bottom;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  z-index: -999;
+  padding-bottom: 80px;
+}
+
+.contents-page {
+  max-width: 1252px;
+  margin: 0 auto;
+  padding-top: 70px;
+}
+h3 {
+  font-size: 18px;
+  font-weight: 500;
+  text-transform: uppercase;
+  line-height: 1.5;
+}
+h3::after {
+  display: block;
+  width: 100px;
+  height: 3px;
+  content: '';
+  background-color: #768ea8;
+}
+.panel-group {
+  margin: 15px 0;
+}
+.panel-group .panel {
+  border-radius: 0;
+  box-shadow: none;
+  border-color: #eeeeee;
+  margin-bottom: 0;
+}
+.panel-default > .panel-heading {
+  color: #333;
+  background-color: #f5f5f5;
+  border-color: #ddd;
+  padding: 0;
+  border-radius: 0;
+}

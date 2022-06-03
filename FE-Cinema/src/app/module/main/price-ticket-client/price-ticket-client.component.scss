@@ -1,0 +1,51 @@
+.breadcrumb {
+  background-color: #768ea8;
+}
+.breadcrumb > li + li::before {
+  padding: 0 5px;
+  color: #a0a3a7;
+  font-family: 'Font Awesome 5 Pro', sans-serif;
+  font-weight: 900;
+  line-height: 1;
+  content: '\f105';
+}
+.btn-outline {
+  color: #768ea8;
+  border-color: #768ea8;
+  margin-bottom: 2%;
+  margin-left: 2%;
+}
+.btn-outline:hover {
+  background-color: #768ea8;
+  color: white;
+}
+.btn-orange {
+  background-color: #768ea8;
+  color: white;
+  margin-bottom: 2%;
+  margin-left: 2%;
+}
+
+.backgroundTable {
+  background-image: url('http://www.pngmagic.com/product_images/yellow-and-white-background.jpg');
+}
+.inputTable {
+  background-image: url('http://www.pngmagic.com/product_images/yellow-and-white-background.jpg');
+  align-items: center;
+}
+.inputTable3D {
+  background-image: url('http://www.pngmagic.com/product_images/yellow-and-white-background.jpg');
+  align-items: center;
+}
+.card-header {
+  background-color: #768ea8;
+  color: aliceblue;
+}
+.titleD:after {
+  display: block;
+  width: 80px;
+  height: 1px;
+  padding-top: 3px;
+  content: '';
+  background-color: #768ea8;
+}
