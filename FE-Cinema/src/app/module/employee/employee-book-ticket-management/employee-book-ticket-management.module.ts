@@ -7,13 +7,17 @@ import { CancelTicketComponent } from './cancel-ticket/cancel-ticket.component';
 import { ConfirmTicketComponent } from './confirm-ticket/confirm-ticket.component';
 import { GetTicketComponent } from './get-ticket/get-ticket.component';
 import { PrintTicketComponent } from './print-ticket/print-ticket.component';
+import {FormsModule} from '@angular/forms';
+import {NgxPrintModule} from 'ngx-print';
 
 
 @NgModule({
   declarations: [BookTicketListComponent, CancelTicketComponent, ConfirmTicketComponent, GetTicketComponent, PrintTicketComponent],
   imports: [
     CommonModule,
-    EmployeeBookTicketManagementRoutingModule
+    EmployeeBookTicketManagementRoutingModule,
+    FormsModule,
+    NgxPrintModule
   ]
 })
 export class EmployeeBookTicketManagementModule { }

@@ -10,18 +10,20 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {MatRadioModule} from '@angular/material/radio';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatSelectModule} from '@angular/material/select';
+import {NgxPaginationModule} from 'ngx-pagination';
 
 
 @NgModule({
   declarations: [CreateUserComponent, EditUserComponent, DeleteUserComponent, ListUserComponent],
-  imports: [
-    CommonModule,
-    EmployeeMemberManagementRoutingModule,
-    FormsModule,
-    MatRadioModule,
-    ReactiveFormsModule,
-    MatFormFieldModule,
-    MatSelectModule
-  ]
+    imports: [
+        CommonModule,
+        EmployeeMemberManagementRoutingModule,
+        FormsModule,
+        MatRadioModule,
+        ReactiveFormsModule,
+        MatFormFieldModule,
+        MatSelectModule,
+        NgxPaginationModule
+    ]
 })
 export class EmployeeMemberManagementModule { }

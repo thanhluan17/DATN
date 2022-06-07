@@ -1,1 +1,97 @@
-<p>detail-movie works!</p>
+<div class="container-fluid"
+     style="background-image: url(https://assets.isu.pub/document-structure/201119095039-81c9c6ee54cf9d84cd37f8bfacda75ea/v1/fa7693daeda883175fba952e4a65047c.jpg); margin-top: 25px">
+  <div class="container">
+    <div class="col-xs-12 film-detail-title">
+      <ol class="breadcrumb">
+        <li>
+          <a href="#" style="color: aliceblue;">Trang Chủ </a>
+        </li>
+        <li class="breadcrumb-item active upper-text" style="color: aliceblue;">Đặt Vé</li>
+      </ol>
+    </div>
+    <div class="row">
+      <div class="col-md-4 col-sm-4 col-xs-8 col-xs-offset-2 col-md-offset-0">
+        <img src="{{movie.posterMovie}}" alt="img"
+             id="imgFilm">
+        <button class="btn btn-outline-light btnVd" data-toggle="modal" data-target="#myModal"><i
+          class="fas fa-play"></i></button>
+      </div>
+      <div class="col-md-8 col-sm-8 col-xs-12">
+        <div class="row">
+          <div class="col-10">
+            <h3>{{movie.movieName}}</h3>
+          </div>
+          <div class="col-2">
+
+          </div>
+        </div>
+        <div class="row timeLk">
+          <label>Thời Lượng: &nbsp;</label>
+          <span>
+                <i class="fas fa-history"></i>
+            {{movie.movieLength}} phút
+                </span>
+        </div>
+        <div>
+          <label>Đạo diễn: &nbsp;</label>
+          <span>{{movie.director}}</span>
+        </div>
+        <div>
+          <label>Diễn viên: &nbsp;</label>
+          <span>{{movie.actor}}</span>
+        </div>
+        <div>
+          <label>Thể loại: &nbsp;</label>
+          <span *ngFor="let category of categories">{{category.categoryName}}, </span>
+        </div>
+        <div>
+          <label>Khởi chiếu: &nbsp;</label>
+          <span>{{movie.startDate}}</span>
+        </div>
+        <div>
+          <label class="row" style="margin-left: 3px">Đánh Giá: &nbsp; &nbsp; &nbsp; &nbsp;
+          </label>
+        </div>
+        <div>
+          <p>Phim mới <strong>{{movie.movieName | uppercase}}</strong> khởi
+            chiếu {{movie.startDate | date: "dd/MM/yyyy"}} tại rạp chiếu phim toàn quốc.
+          </p>
+        </div>
+        <div>
+          <a [routerLink]="['/booking/movie',movie.movieId]">
+            <button class="btn btn-outline btnOrder">Đặt Vé</button>
+          </a>
+        </div>
+        <div>
+          <!-- The Modal -->
+          <div class="modal fade" id="myModal">
+            <div class="modal-dialog modal-dialog-trailer">
+              <div class="modal-content">
+                <!-- Modal Header -->
+                <div class="modal-header py-1">
+                  <h5 class="modal-title text-uppercase">{{movie.movieName | uppercase}}  OFFICIAL TRAILER</h5>
+                  <button type="button" value="" class="close" data-dismiss="modal" id="closeModal">&times;</button>
+                </div>
+
+                <!-- Modal body -->
+                <div class="modal-body p-0">
+                  <!-- đường link youtube phải là link embed (link nhúng) -->
+                  <iframe width="100%" height="600px" [src]="videoUrl()" title="YouTube video player" frameborder="0"
+                          allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                          allowfullscreen></iframe>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div>
+        <p class="titleD">Nội Dung Phim</p>
+        <span>
+          {{movie.description}}
+        </span>
+      </div>
+    </div>
+  </div>
+</div>
+

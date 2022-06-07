@@ -4,6 +4,8 @@ import {Ward} from '../../../../entity/ward';
 import {MemberManagementService} from '../../../../service/employee/member-management.service';
 import {ToastrService} from 'ngx-toastr';
 
+
+
 @Component({
   selector: 'app-list-user',
   templateUrl: './list-user.component.html',
@@ -18,7 +20,6 @@ export class ListUserComponent implements OnInit {
   keySearch = '';
   deleteId: number;
   deleteName: string;
-  p = 1;
   page = 1;
   indexPagination = 0;
   selectPagination: number;
@@ -36,7 +37,7 @@ export class ListUserComponent implements OnInit {
   loadData(): void {
     this.memberManagementService.getAllUsers(this.indexPagination).subscribe(data => {
       this.users = data;
-      if (this.users.length === 0) {
+      if (this.users.length == 0) {
         this.toastr.warning('Không tìm thấy dữ liệu', 'Thông báo', {
           timeOut: 3000,
           progressAnimation: 'increasing'
@@ -50,7 +51,7 @@ export class ListUserComponent implements OnInit {
   }
 
   firstPage() {
-    if (this.keySearch !== '') {
+    if (this.keySearch != '') {
       this.indexPagination = 0;
       this.memberManagementService.searchUserByPagination(this.keySearch, this.indexPagination).subscribe(data => {
         this.users = data;
@@ -64,10 +65,10 @@ export class ListUserComponent implements OnInit {
 
   nextPage() {
     this.indexPagination = this.indexPagination + 1;
-    if (this.keySearch !== '') {
+    if (this.keySearch != '') {
       this.memberManagementService.searchUserByPagination(this.keySearch, this.indexPagination).subscribe(data => {
         this.users = data;
-        if (this.users.length === 0) {
+        if (this.users.length == 0) {
           this.firstPage();
           this.toastr.warning('Không tìm thấy trang hoặc danh sách đã hết', 'Thông báo', {
             timeOut: 3000,
@@ -79,7 +80,7 @@ export class ListUserComponent implements OnInit {
     this.memberManagementService.getAllUsers((this.indexPagination * 5)).subscribe(data => {
       this.users = data;
       console.log(this.users);
-      if (this.users.length === 0) {
+      if (this.users.length == 0) {
         this.firstPage();
         this.toastr.warning('Không tìm thấy trang hoặc danh sách đã hết', 'Thông báo', {
           timeOut: 3000,
@@ -91,7 +92,7 @@ export class ListUserComponent implements OnInit {
 
   previousPage() {
     this.indexPagination = this.indexPagination - 1;
-    if (this.keySearch !== '') {
+    if (this.keySearch != '') {
       if (this.indexPagination <= 0) {
         this.indexPagination = 0;
         this.memberManagementService.searchUserByPagination(this.keySearch, this.indexPagination).subscribe(data => {
@@ -114,7 +115,7 @@ export class ListUserComponent implements OnInit {
   }
 
   selectPage(selectPageNumber: number) {
-    if (this.keySearch !== '') {
+    if (this.keySearch != ''){
       if (selectPageNumber < 1 && selectPageNumber > this.totalPagination) {
         this.indexPagination = 0;
         this.firstPage();
@@ -126,7 +127,7 @@ export class ListUserComponent implements OnInit {
       this.indexPagination = selectPageNumber - 1;
       this.memberManagementService.searchUserByPagination(this.keySearch, (selectPageNumber * 5) - 5).subscribe(data => {
         this.users = data;
-        if (this.users.length === 0) {
+        if (this.users.length == 0) {
           this.toastr.warning('Quá số trang tìm kiếm', 'Thông báo', {
             timeOut: 3000,
             progressAnimation: 'increasing'
@@ -146,7 +147,7 @@ export class ListUserComponent implements OnInit {
     this.indexPagination = selectPageNumber - 1;
     this.memberManagementService.getAllUsers((selectPageNumber * 5) - 5).subscribe(data => {
       this.users = data;
-      if (this.users.length === 0) {
+      if (this.users.length == 0) {
         this.toastr.warning('Quá số trang tìm kiếm', 'Thông báo', {
           timeOut: 3000,
           progressAnimation: 'increasing'
@@ -157,9 +158,9 @@ export class ListUserComponent implements OnInit {
   }
 
   lastPage() {
-    if (this.keySearch !== '') {
+    if (this.keySearch != '') {
       this.indexPagination = this.totalPagination;
-      this.memberManagementService.searchUserByPagination(this.keySearch, this.totalPagination * 5).subscribe(data => {
+      this.memberManagementService.searchUserByPagination(this.keySearch, this.totalPagination * 5 ).subscribe(data => {
         this.users = data;
       });
     }
@@ -167,7 +168,7 @@ export class ListUserComponent implements OnInit {
     this.memberManagementService.getAllUsers(this.totalPagination * 5).subscribe(data => {
       this.users = data;
       console.log(this.totalPagination);
-      if (this.users.length === 0) {
+      if (this.users.length == 0) {
         this.toastr.warning('Không tìm thấy dữ liệu', 'Thông báo', {
           timeOut: 3000,
           progressAnimation: 'increasing'
@@ -215,11 +216,11 @@ export class ListUserComponent implements OnInit {
     console.log('abcd');
     this.memberManagementService.searchUserByPagination(this.keySearch, this.indexPagination).subscribe(data => {
       this.users = data;
-      if (this.keySearch === '') {
+      if (this.keySearch == '') {
         this.toastr.warning('Xin vui lòng nhập từ khoá', 'Thông báo');
         this.firstPage();
 
-      } else if (this.users.length === 0) {
+      } else if (this.users.length == 0) {
         this.toastr.warning('Không tìm thấy kết quả', 'Thông báo');
       } else {
         this.users = data;
@@ -232,5 +233,4 @@ export class ListUserComponent implements OnInit {
       this.totalPagination = Math.floor((this.usersNotPagination.length - 1) / 5);
     });
   }
-
 }

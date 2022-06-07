@@ -1,1 +1,119 @@
-<p>book-ticket-list works!</p>
+<div>
+  <div>
+    <h3 class="title" style="color: #768ea8">Quản lý đặt vé</h3>
+    <div class="input-group col-8 my-3">
+      <select [(ngModel)]="optionSearch" class="form-control mx-2">
+        <option value="1">Tìm kiếm theo Mã đặt vé</option>
+        <option value="2">Tìm kiếm theo Mã thành viên</option>
+        <option value="3">Tìm kiếm theo CMND</option>
+        <option value="4">Tìm kiếm theo Số điện thoại</option>
+        <option value="5">Tìm kiếm theo Tên khách</option>
+      </select>
+      <input type="search" class="form-control" placeholder="Tìm kiếm..." aria-label="Search"
+             aria-describedby="search-addon" [(ngModel)]="keySearch">
+      <button type="button" class="btn btn-outline-success mx-2" (click)="search()">Tìm kiếm</button>
+    </div>
+    <div>
+      <div *ngIf="bookedTicketList.length > 0; else nodata">
+        <!--        <div>-->
+        <table class="table table-hover">
+          <thead>
+          <tr>
+            <th>Mã đặt vé</th>
+            <th>Mã thành viên</th>
+            <th>Họ tên</th>
+            <th>CMND</th>
+            <th>Phim</th>
+            <th>Xuất chiếu</th>
+            <th>Nhận vé</th>
+            <th>Huỷ vé</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr>
+            <!--          <tr *ngFor="let item of bookedTicketList | paginate: {itemsPerPage: 3, currentPage: p, totalItems:totalLength}">-->
+          <tr *ngFor="let item of bookedTicketList">
+            <td *ngIf="item.ticketId < 10">
+              <span>BV000{{item.ticketId}}</span>
+            </td>
+            <td *ngIf="item.ticketId >=10 && item.ticketId <=99 ">
+              <span>BV00{{item.ticketId}}</span>
+            </td>
+            <td *ngIf="item.ticketId >=100 && item.ticketId <= 999 ">
+              <span>BV0{{item.ticketId}}</span>
+            </td>
+            <td *ngIf="item.ticketId >=1000 && item.ticketId <= 9999 ">
+              <span>BV0{{item.ticketId}}</span>
+            </td>
+            <td *ngIf="item.user.userId < 10">
+              <span>TV000{{item.user.userId}}</span>
+            </td>
+            <td *ngIf="item.user.userId >=10 && item.user.userId <=99 ">
+              <span>TV00{{item.user.userId}}</span>
+            </td>
+            <td *ngIf="item.user.userId >=100 && item.user.userId <= 999 ">
+              <span>TV0{{item.user.userId}}</span>
+            </td>
+            <td *ngIf="item.user.userId >=1000 && item.user.userId <= 9999 ">
+              <span>TV0{{item.user.userId}}</span>
+            </td>
+            <td>{{item.user.name}}</td>
+            <td>{{item.user.idCard}}</td>
+            <td>{{item.movieTicket.movie.movieName}}</td>
+            <td>{{item.movieTicket.showDate | date: 'dd-MM-yyyy'}} / {{item.movieTicket.showTime.showTime}}</td>
+            <td>
+              <button class="btn btn-success" [routerLink]="['get-ticket', item.ticketId]">
+                <i class="far fa-check-square"></i>
+              </button>
+            </td>
+            <td>
+              <button class="btn btn-danger" data-toggle="modal" data-target="#cancelTicketModal"
+                      (click)="cancelId = item.ticketId">
+                <i class="far fa-window-close"></i>
+              </button>
+            </td>
+          </tr>
+          </tbody>
+        </table>
+        <!--        <div>-->
+        <!--          <pagination-controls (pageChange)="p = $event" nextLabel="Sau" previousLabel="Trước"></pagination-controls>-->
+        <!--        </div>-->
+        <ul class="pagination modal-4">
+          <li><a (click)="firstPage()" class="prev"><i class="fa fa-chevron-left"></i> Đầu</a></li>
+          <li><a (click)="previousPage()"><i class="fa fa-chevron-left"></i></a></li>
+          <!--          <li *ngIf="indexPagination > 1"><a (click)="previousPage()">{{indexPagination - 1}}</a></li>-->
+          <li><a class="active">{{indexPagination}}</a></li>
+          <!--          <li *ngIf="indexPagination <= totalPagination - 1"><a (click)="nextPage()">{{indexPagination + 1}}</a></li>-->
+          <!--          <li> <a  class="active">{{totalPagination}}</a></li>-->
+          <li><a (click)="nextPage()"><i class="fa fa-chevron-right"></i></a></li>
+          <li><a (click)="lastPage()" class="next">Cuối <i class="fa fa-chevron-right"></i></a></li>
+          <li><label>
+            <input type="number" class="input-group-prepend" style="width: 40px; height: 28px"
+                   [(ngModel)]="selectPagination">
+          </label></li>
+          <li><a (click)="selectPage(selectPagination)">Đi</a></li>
+        </ul>
+
+      </div>
+      <ng-template #nodata>
+        <p style="color: red" class="text-center">----------Không có khách hàng đặt vé----------</p>
+      </ng-template>
+    </div>
+  </div>
+
+  <div class="modal fade" id="cancelTicketModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-body">
+          <app-cancel-ticket [cancelId]="cancelId" (cancelComplete)="cancelSuccess()"></app-cancel-ticket>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+

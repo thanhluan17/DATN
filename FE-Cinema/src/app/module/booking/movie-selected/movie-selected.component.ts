@@ -61,7 +61,10 @@ export class MovieSelectedComponent implements OnInit {
     this.endDate = new Date(this.movie.endDate);
 
     if (this.endDate > this.startDate) {
+      console.log(this.startDate);
+      console.log(this.endDate);
       this.diff = this.endDate.getDate() - this.startDate.getDate();
+      console.log(this.diff);
       for (let i = 0; i <= this.diff; i++) {
         this.listDateTime.push(this.startDate.toISOString().slice(0, 10));
         this.startDate.setDate(this.startDate.getDate() + 1);

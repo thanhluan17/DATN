@@ -1,1 +1,22 @@
-<p>cancel-ticket works!</p>
+<div class="container">
+  <h1 style="color: #027FFF" class="text-center">Huỷ vé đã đặt</h1>
+  <form>
+    <table class="table table-hover">
+      <thead></thead>
+      <tbody>
+      <tr>
+        <td><p style="color: red">Bạn có chắc muốn huỷ vé không?</p>
+        </td>
+      </tr>
+      <tr class="d-inline-flex col-12">
+        <td class="col-6">
+          <button class="btn btn-warning float-left text-light" data-dismiss="modal" id="closeModal">Hoàn Tác</button>
+        </td>
+        <td class="col-6">
+          <button class="btn btn-danger float-right" data-dismiss="modal" (click)="onCancel()">Huỷ Vé</button>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </form>
+</div>

@@ -10,13 +10,15 @@ import { SeatCreateComponent } from './seat-create/seat-create.component';
 import { SeatDeleteComponent } from './seat-delete/seat-delete.component';
 import { SeatEditComponent } from './seat-edit/seat-edit.component';
 import { SeatListComponent } from './seat-list/seat-list.component';
+import {FormsModule} from '@angular/forms';
 
 
 @NgModule({
   declarations: [RoomCreateComponent, RoomDeleteComponent, RoomEditComponent, RoomListComponent, SeatCreateComponent, SeatDeleteComponent, SeatEditComponent, SeatListComponent],
-  imports: [
-    CommonModule,
-    AdminRoomManagementRoutingModule
-  ]
+    imports: [
+        CommonModule,
+        AdminRoomManagementRoutingModule,
+        FormsModule
+    ]
 })
 export class AdminRoomManagementModule { }

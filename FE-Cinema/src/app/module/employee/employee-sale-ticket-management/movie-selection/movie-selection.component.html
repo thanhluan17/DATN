@@ -1,1 +1,105 @@
-<p>movie-selection works!</p>
+<div class="container-fluid" id="fluid">
+  <div id="follow-div" class="row m-0 p-0">
+    <div class="follow col-lg-3 col-md-3">
+      <p class="follow-title" id="active">chọn phim</p>
+    </div>
+    <div class="follow col-lg-3 col-md-3">
+      <p class="follow-title">chọn ghế</p>
+    </div>
+    <div class="follow col-lg-3 col-md-3">
+      <p class="follow-title">xác nhận đặt vé</p>
+    </div>
+    <div class="follow col-lg-3 col-md-3">
+      <p class="follow-title">thông tin đặt vé</p>
+    </div>
+  </div>
+  <div>
+    <div class="form-inline mt-5">
+      <mat-form-field appearance="fill">
+        <mat-label>Chọn ngày chiếu phim</mat-label>
+        <input value="" id="pick1" matInput (dateInput)="changeDate($event.target.value)" [min]="minDate" [matDatepicker]="picker">
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+      <button [disabled]="choseDate === null" (click)="removeSearch()" class="btn bg-orange ml-3 text-white">Hủy Chọn Ngày</button>
+    </div>
+  </div>
+  <div *ngIf="listMovie !== null" class="container-fluid row pick-div">
+    <div class="pick col-lg-4" style="padding-left: 0">
+      <table class="table table-hover table-bordered border border-secondary pick-movie">
+        <thead class="tb-head">
+        <tr>
+          <td class="border border-secondary" colspan="2">Chọn phim</td>
+        </tr>
+        </thead>
+        <tbody class="border border-secondary">
+        <tr class="border border-light" *ngFor="let movieTicket of listMovie">
+          <td [class.chooseFilm]="activeId && activeId===movieTicket.movie.movieId"
+              (click)="changeShowDate(movieTicket.movie.movieId)">
+            <img class="img" [src]="movieTicket.movie.posterMovie" alt="img" width="80" height="60">
+            <span class="movie-title">{{movieTicket.movie.movieName}}</span>
+          </td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="pick col-lg-4">
+      <table class="table table-hover table-bordered border border-secondary">
+        <thead class="tb-head">
+        <tr>
+          <td class="border border-secondary" colspan="2">Chọn ngày chiếu</td>
+        </tr>
+        </thead>
+        <tbody class="border border-secondary">
+        <tr class="disabled-hover">
+        </tr>
+        </tbody>
+        <tbody>
+        <tr *ngIf="choseDate === null ">
+          <select (change)="changeShowTime($event.target.value)" [disabled]="listShowDate === null"
+                  class="custom-select bg-white" style="cursor: pointer">
+            <option class="form-control" disabled [selected]="showDate === null">Vui lòng chọn ngày chiếu</option>
+            <option *ngFor="let movieTicket of listShowDate" [value]="movieTicket.showDate">
+              <td>{{movieTicket.showDate| date: 'dd/MM/yyyy'}}</td>
+            </option>
+          </select>
+        </tr>
+        <tr *ngIf="choseDate !== null">
+          <td>{{choseDate| date: 'dd/MM/yyyy'}}</td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="pick col-lg-4">
+      <table class="table table-hover table-bordered border border-secondary">
+        <thead class="tb-head">
+        <tr>
+          <td class="border border-secondary" colspan="2">Chọn suất</td>
+        </tr>
+        </thead>
+        <tbody>
+        </tbody>
+        <tbody>
+        <tr>
+          <select (change)="changeShowTimeId($event.target.value)" [disabled]="listShowTime === null"
+                  style="cursor: pointer" class="custom-select bg-white">
+            <option [selected]="showTimeId === null" disabled>Vui lòng chọn suất chiếu</option>
+            <option *ngFor="let movieTicket of listShowTime" [value]="movieTicket.showTime.showTimeId">
+              <td>{{movieTicket.showTime.showTime}}</td>
+            </option>
+          </select>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div id="btnContinue" class="text-center mt-4 mb-5">
+    <a>
+      <button (click)="checkMovieTicket()" class="btn btn-outline-success rounded-pill" type="button"><span
+        class="arrow">
+        <i class="fas fa-2x fa-arrow-right"></i>
+      </span>
+      </button>
+    </a>
+  </div>
+</div>

@@ -13,10 +13,11 @@
             <div class="search-box">
               <div class="w-100" role="search">
                 <form class="form-inline my-2 my-lg-0 search-box">
-                  <input class="form-control mr-sm-2 input-search" tabindex  type="search"
+                  <input class="form-control mr-sm-2 input-search" tabindex type="search"
                          #keySearch id="header-search-input" (keyup.enter)="search(keySearch.value)"
                          placeholder="Nhập từ khóa để tìm kiếm" aria-label="Search">
-                  <button class="btn btn-info my-2 my-sm-0" tabindex (click)="search(keySearch.value)"><i class="fas fa-search"></i></button>
+                  <button class="btn btn-info my-2 my-sm-0" tabindex (click)="search(keySearch.value)"><i
+                    class="fas fa-search"></i></button>
                 </form>
               </div>
             </div>
@@ -63,14 +64,12 @@
                 <div class="dropdown-menu">
                   <a class="dropdown-item" routerLink="/member/info">
                     <i class="far fa-id-card"></i> Hồ sơ cá nhân</a>
-                  <a class="dropdown-item" routerLink="/admin/movie-ticket">
-                    <i class="far fa-calendar-check"></i> Quản lý suất chiếu</a>
+                  <a class="dropdown-item" routerLink="/employee/book/tickets/book-ticket-list">
+                    <i class="far fa-id-card"></i> Quản lý đặt vé</a>
                   <a class="dropdown-item" routerLink="/admin/room">
                     <i class="fas fa-person-booth"></i> Quản lý phòng chiếu</a>
                   <a class="dropdown-item" routerLink="/employee/member/management">
                     <i class="fas fa-users"></i> Quản lý thành viên</a>
-                  <a class="dropdown-item" routerLink="/employee/sale/tickets">
-                    <i class="fas fa-hand-holding-usd"></i> Quản lý bán vé</a>
                   <a class="dropdown-item" routerLink="/admin/movie/movie-list">
                     <i class="fas fa-film"></i> Quản lý phim</a>
                   <a class="dropdown-item" routerLink="/logout">
@@ -90,8 +89,6 @@
                     <i class="far fa-id-card"></i> Hồ sơ cá nhân</a>
                   <a class="dropdown-item" routerLink="/employee/member/management">
                     <i class="fas fa-users"></i> Quản lý thành viên</a>
-                  <a class="dropdown-item" routerLink="/employee/sale/tickets">
-                    <i class="fas fa-hand-holding-usd"></i> Quản lý bán vé</a>
                   <a class="dropdown-item" routerLink="/logout">
                     <i class="fas fa-sign-out-alt"></i> Đăng xuất</a>
 

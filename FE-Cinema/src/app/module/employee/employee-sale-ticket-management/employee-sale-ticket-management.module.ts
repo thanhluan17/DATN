@@ -6,13 +6,17 @@ import { ConfirmSaleTicketComponent } from './confirm-sale-ticket/confirm-sale-t
 import { InfoSaleTicketComponent } from './info-sale-ticket/info-sale-ticket.component';
 import { MovieSelectionComponent } from './movie-selection/movie-selection.component';
 import { SeatSelectionComponent } from './seat-selection/seat-selection.component';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatDatepickerModule} from '@angular/material/datepicker';
 
 
 @NgModule({
   declarations: [ConfirmSaleTicketComponent, InfoSaleTicketComponent, MovieSelectionComponent, SeatSelectionComponent],
   imports: [
     CommonModule,
-    EmployeeSaleTicketManagementRoutingModule
+    EmployeeSaleTicketManagementRoutingModule,
+    MatFormFieldModule,
+    MatDatepickerModule
   ]
 })
 export class EmployeeSaleTicketManagementModule { }

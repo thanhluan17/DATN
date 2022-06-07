@@ -7,7 +7,6 @@
       <div class="row p-0 m-0">
         <div class="col-3">
           <a routerLink="/employee/member/management/create" class="btn btn-success btnCreate">
-            <i class="fas fa-plus"></i>
             <span>Thêm Thành Viên</span>
           </a>
         </div>
@@ -28,7 +27,6 @@
         <tr>
           <th>STT</th>
           <th>Mã</th>
-          <!--              <th>Username</th>-->
           <th>Họ và Tên</th>
           <th>Email</th>
           <th>Địa chỉ</th>
@@ -67,13 +65,11 @@
             {{user.accountStatus.accountStatusName}}
           </td>
           <td>
-            <a [routerLink]="['edit',user.userId]" *ngIf="user.accountStatus.accountStatusId !==3" class="edit"
-               data-toggle="modal"><i
+            <a [routerLink]="['edit',user.userId]" *ngIf="user.accountStatus.accountStatusId !==3" class="edit" data-toggle="modal"><i
               class="material-icons"
               data-toggle="tooltip"
               title="Edit">&#xE254;</i></a>
-            <a *ngIf="user.accountStatus.accountStatusId !== 3" (click)="deleteId = user.userId; deleteName = user.name"
-               class=" delete" data-target="#deletedModal"
+            <a *ngIf="user.accountStatus.accountStatusId !== 3" (click)="deleteId = user.userId; deleteName = user.name" class=" delete" data-target="#deletedModal"
                data-toggle="modal"><i
               class="material-icons" title="Delete">&#xE872;</i></a>
           </td>
@@ -90,11 +86,9 @@
         <li *ngIf="indexPagination > 0"><a (click)="previousPage()"><i class="fa fa-chevron-left"></i></a></li>
         <li *ngIf="indexPagination > 0"><a (click)="selectPage(indexPagination )">{{indexPagination }}</a></li>
         <li><a class="active">{{indexPagination + 1 }}</a></li>
-        <li *ngIf="indexPagination <= totalPagination -1 "><a
-          (click)="selectPage(indexPagination +2)">{{indexPagination + 2}}</a></li>
+        <li *ngIf="indexPagination <= totalPagination -1 "><a (click)="selectPage(indexPagination +2)">{{indexPagination + 2}}</a></li>
         <!--            <li><a class="active">{{totalPagination +1 | number : '1.0'}}</a></li>-->
-        <li *ngIf="indexPagination <= totalPagination -1 "><a (click)="nextPage()"><i
-          class="fa fa-chevron-right"></i></a></li>
+        <li *ngIf="indexPagination <= totalPagination -1 "><a (click)="nextPage()"><i class="fa fa-chevron-right"></i></a></li>
         <li *ngIf="indexPagination <= totalPagination -1 "><a class="next" (click)="lastPage()"> Cuối
           <i class="fa fa-chevron-right"></i>
         </a></li>
@@ -118,7 +112,7 @@
             </div>
             <div class="modal-body">
               <app-delete-user [deleteId]="deleteId" [deleteName]="deleteName"
-                               (deleteComplete)="deleteSuccess()"></app-delete-user>
+                                        (deleteComplete)="deleteSuccess()"></app-delete-user>
             </div>
           </div>
         </div>
@@ -127,4 +121,3 @@
     </div>
   </div>
 </div>
-<!--</div>-->

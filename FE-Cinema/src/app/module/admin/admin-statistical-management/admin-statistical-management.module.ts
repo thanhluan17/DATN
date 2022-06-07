@@ -6,13 +6,17 @@ import { CategoryStatisticsComponent } from './category-statistics/category-stat
 import { MemberStatisticsComponent } from './member-statistics/member-statistics.component';
 import { MovieStatisticsComponent } from './movie-statistics/movie-statistics.component';
 import { ShowtimeStatisticsComponent } from './showtime-statistics/showtime-statistics.component';
+import {FormsModule} from '@angular/forms';
+import {ChartModule} from 'primeng/chart';
 
 
 @NgModule({
   declarations: [CategoryStatisticsComponent, MemberStatisticsComponent, MovieStatisticsComponent, ShowtimeStatisticsComponent],
   imports: [
     CommonModule,
-    AdminStatisticalManagementRoutingModule
+    AdminStatisticalManagementRoutingModule,
+    FormsModule,
+    ChartModule
   ]
 })
 export class AdminStatisticalManagementModule { }
