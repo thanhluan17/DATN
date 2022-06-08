@@ -1,4 +1,4 @@
-<a class="btn btn-success btn-lg mt-5 mb-3" routerLink="/admin/movie/add-movie" type="button">Thêm mới phim</a>
+<a class="btn btn-success btn-lg p-1 mt-5 mb-3" routerLink="/admin/movie/add-movie" type="button">Thêm mới phim</a>
 <table class="table table-hover">
   <thead>
   <tr>
@@ -24,12 +24,12 @@
     <th>{{movie.movieLength}}</th>
     <th><a href="{{movie.trailer}}">Trailer</a></th>
     <td>
-      <button class="btn btn-danger column8" data-target="#exampleModal" data-toggle="modal" style="color: black"
+      <button class="btn btn-danger column8 text-white" data-target="#exampleModal" data-toggle="modal" style="color: black"
               type="button" (click)="getMovieId(movie.movieId)">
         Xoá
       </button>
     </td>
-    <td><a class="btn btn-warning column8" (click)="sendMovieId(movie.movieId)">
+    <td><a class="btn btn-warning column8 text-white" (click)="sendMovieId(movie.movieId)">
       Sửa
     </a></td>
   </tr>
