@@ -38,7 +38,6 @@ export class LoginComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    // this.googleSDK();
     this.form = this.formBuilder.group({
       username: ['', [Validators.required, Validators.pattern('^[a-zA-Z0-9@.]+$'),
         Validators.minLength(6), Validators.maxLength(45)]],
@@ -75,13 +74,6 @@ export class LoginComponent implements OnInit {
         }
 
         switch (this.tokenStorageService.getUser().user.account.accountStatus.accountStatusId) {
-          // case this.unconfirmedEmailStatus: {
-          //   console.log('Account unconfirm email: LoginComponent');
-          //   this.statusAccountMessage = 'Tài khoản chưa xác nhận email!';
-          //   this.clearStorage();
-          //   break;
-          // }
-          // case this.activeStatus: {
           case this.unconfirmedEmailStatus: {
             this.securityService.isLoggedIn = true;
             this.username = this.tokenStorageService.getUser().username;
@@ -139,31 +131,6 @@ export class LoginComponent implements OnInit {
     });
   }
 
-  // googleSDK() {
-  //   window.googleSDKLoaded = () => {
-  //     window.gapi.load('auth2', () => {
-  //       this.auth2 = window.gapi.auth2.init({
-  //         client_id: '985003416413-jksvvf1pugd663prbv15vf3gtd7uc06s.apps.googleusercontent.com',
-  //         cookiepolicy: 'single_host_origin',
-  //         scope: 'profile email'
-  //       });
-  //       this.prepareLoginButton();
-  //     });
-  //   };
-  //
-  //   (function(d, s, id) {
-  //     let js, fjs = d.getElementsByTagName(s)[0];
-  //     if (d.getElementById(id)) {
-  //       return;
-  //     }
-  //     js = d.createElement(s);
-  //     js.id = id;
-  //     js.src = 'https://apis.google.com/js/platform.js?onload=googleSDKLoaded';
-  //     fjs.parentNode.insertBefore(js, fjs);
-  //   }(document, 'script', 'google-jssdk'));
-  //
-  // }
-
   prepareLoginButton() {
     this.auth2.attachClickHandler(this.loginElement.nativeElement, {},
       (googleUser) => {
@@ -184,9 +151,6 @@ export class LoginComponent implements OnInit {
           this.securityService.isLoggedIn = true;
           this.username = this.tokenStorageService.getUser().username;
           this.role = this.tokenStorageService.getUser().authorities[0].authority;
-
-          // this.appComponent.ngOnInit().then();
-          // this.headerComponent.ngOnInit();
           this.router.navigateByUrl('/home').then(r => window.location.reload()); // it need a real path, not like this "" or "/"
         }, error => {
           console.log('get ' + error.err.message + ' at prepareLoginButton()');

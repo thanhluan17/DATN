@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {MovieTicket} from '../../../entity/movieTicket';
+import {TicketPriceService} from '../../../service/ticket/ticket-price.service';
 import {ToastrService} from 'ngx-toastr';
-import {TicketPriceService} from '../../../service/member/ticket-price.service';
 
 @Component({
   selector: 'app-price-ticket-client',
@@ -128,5 +128,7 @@ export class PriceTicketClientComponent implements OnInit {
 
 
   }
+
 }
+
 

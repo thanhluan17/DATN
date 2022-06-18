@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {SecurityService} from '../../../service/security/security.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-login-google',
@@ -7,9 +9,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LoginGoogleComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private securityService: SecurityService,
+    private router: Router,
+  ) {
+  }
 
   ngOnInit(): void {
+    this.router.navigateByUrl('/');
   }
 
 }

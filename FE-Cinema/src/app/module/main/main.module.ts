@@ -21,10 +21,19 @@ import {MatDialogModule} from '@angular/material/dialog';
 import {MatButtonModule} from '@angular/material/button';
 import {MatIconModule} from '@angular/material/icon';
 import {AdminRoutingModule} from '../admin/admin-routing.module';
+import {MatNativeDateModule} from '@angular/material/core';
 
 
 @NgModule({
-    declarations: [DetailMovieComponent, MainContentComponent, MainEventComponent, MainFooterComponent, MainHeaderComponent, MainHomePageComponent, MainInstructionComponent, MainPolicyComponent, MainSearchComponent, MovieCornerComponent, MovieTrailerComponent, PriceTicketClientComponent],
+  declarations: [MainHomePageComponent, MainHeaderComponent, MainFooterComponent, MovieTrailerComponent, MainSearchComponent,
+    DetailMovieComponent,
+    PriceTicketClientComponent,
+    MainContentComponent,
+    MainSearchComponent,
+    MovieCornerComponent,
+    MainEventComponent,
+    MainInstructionComponent,
+    MainPolicyComponent],
   exports: [
     MainHeaderComponent,
     MainFooterComponent
@@ -40,7 +49,8 @@ import {AdminRoutingModule} from '../admin/admin-routing.module';
     AdminRoutingModule,
     MatDatepickerModule,
     MatFormFieldModule,
-    MatInputModule
+    MatInputModule,
+    MatNativeDateModule
   ]
 })
 export class MainModule {
