@@ -109,6 +109,8 @@ export class ConfirmBookingComponent implements OnInit {
         onAuthorize(data, actions) {
           return actions.payment.execute().then(x => {
             console.log('PAYPAL : OK');
+            document.getElementById('pay-btn').click(); return false;  // Form1 is the id of my form tag
+            window.location.href = 'Message.aspx';
           });
         }
       }, this.paypalElement.nativeElement);
